@@ -1,5 +1,5 @@
 <archetype>
-  <id>kata-tondeuse</id>
+  <id>kata-mower</id>
   <sources>
     <source>src/main/java/App.java</source>
   </sources>

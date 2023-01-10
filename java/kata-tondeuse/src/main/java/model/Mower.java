@@ -1,8 +1,10 @@
 package model;
 
-import java.util.Arrays;
-
-public class Tondeuse {
+/**
+ * @author Yann Ducloux
+ * Défini la tondeuse.
+ */
+public class Mower {
     Position position;
     Direction direction;
     Instruction[] instructions;

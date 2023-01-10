@@ -17,7 +17,7 @@ public class RecoverFileDataService {
         String line = bufferedReader.readLine();
         String[] lineCoordinateMax = line.split(" ");
         FileData fileData = new FileData();
-        List<Tondeuse> tondeuses = new ArrayList<Tondeuse>();
+        List<Mower> tondeuses = new ArrayList<Mower>();
         CoordinateMax coordinateMax = new CoordinateMax();
         coordinateMax.setxMax(Integer.parseInt(lineCoordinateMax[0]));
         coordinateMax.setyMax(Integer.parseInt(lineCoordinateMax[0]));
@@ -26,12 +26,12 @@ public class RecoverFileDataService {
             String localisationTondeuse = line;
             String[] splitLocalisationTondeuse = localisationTondeuse.split(" ");
 
-            Tondeuse tondeuse = new Tondeuse();
+            Mower mower = new Mower();
             Position position = new Position();
             position.setX(Integer.parseInt(splitLocalisationTondeuse[0]));
             position.setY(Integer.parseInt(splitLocalisationTondeuse[1]));
-            tondeuse.setPosition(position);
-            tondeuse.setDirection(Direction.valueOf(splitLocalisationTondeuse[2]));
+            mower.setPosition(position);
+            mower.setDirection(Direction.valueOf(splitLocalisationTondeuse[2]));
 
             line = bufferedReader.readLine();
             String[] splitInstruction = line.split("");
@@ -40,8 +40,8 @@ public class RecoverFileDataService {
             for (int i = 0; i < splitInstruction.length; i++) {
                 instructions[i] = Instruction.valueOf(splitInstruction[i]);
             }
-            tondeuse.setInstructions(instructions);
-            tondeuses.add(tondeuse);
+            mower.setInstructions(instructions);
+            tondeuses.add(mower);
         }
         fileData.setTondeuses(tondeuses);
         return fileData;

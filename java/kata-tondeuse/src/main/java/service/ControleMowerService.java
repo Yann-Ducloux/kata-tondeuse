@@ -2,7 +2,11 @@ package service;
 
 import java.io.File;
 
-public class ControleTondeuseService {
+/**
+ * @author Yann DUCLOUX
+ * Service qui gére le contrôle des tondeuses.
+ */
+public class ControleMowerService {
 
 
     public void calculPositionTondeuse(File file){

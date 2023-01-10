@@ -10,9 +10,13 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ControleTondeuseServiceTest {
-    String FILE_NAME = "tondeuse.txt";
-    private final ControleTondeuseService controleTondeuseService = new ControleTondeuseService();
+/**
+ * @author Yann DUCLOUX
+ * Service qui test le service qui gére le contrôle des tondeuses.
+ */
+class ControleMowerServiceTest {
+    String FILE_NAME = "mower.txt";
+    private final ControleMowerService controleMowerService = new ControleMowerService();
     private final PrintStream standardOut = System.out;
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
     @BeforeEach
@@ -29,31 +33,31 @@ class ControleTondeuseServiceTest {
         CoordinateMax coordinateMax = new CoordinateMax();
         coordinateMax.setxMax(5);
         coordinateMax.setyMax(5);
-        List<Tondeuse> tondeuses = new ArrayList<Tondeuse>();
+        List<Mower> tondeuses = new ArrayList<Mower>();
 
-        Tondeuse tondeuseFirst = new Tondeuse();
+        Mower mowerFirst = new Mower();
         Position positionFirst = new Position();
         positionFirst.setX(1);
         positionFirst.setY(2);
         Instruction[] instructionsFirst = {Instruction.G, Instruction.A, Instruction.G,
                 Instruction.A, Instruction.G, Instruction.A,
                 Instruction.G, Instruction.A, Instruction.A};
-        tondeuseFirst.setPosition(positionFirst);
-        tondeuseFirst.setDirection(Direction.N);
-        tondeuseFirst.setInstructions(instructionsFirst);
-        tondeuses.add(tondeuseFirst);
+        mowerFirst.setPosition(positionFirst);
+        mowerFirst.setDirection(Direction.N);
+        mowerFirst.setInstructions(instructionsFirst);
+        tondeuses.add(mowerFirst);
 
-        Tondeuse tondeuseSecond = new Tondeuse();
+        Mower mowerSecond = new Mower();
         Position positionSecond = new Position();
         positionSecond.setX(3);
         positionSecond.setY(3);
         Instruction[] instructionsSecond = {Instruction.A, Instruction.A, Instruction.D,
                 Instruction.A, Instruction.A, Instruction.D, Instruction.A,
                 Instruction.D, Instruction.D, Instruction.A};
-        tondeuseSecond.setPosition(positionSecond);
-        tondeuseSecond.setDirection(Direction.E);
-        tondeuseSecond.setInstructions(instructionsSecond);
-        tondeuses.add(tondeuseSecond);
+        mowerSecond.setPosition(positionSecond);
+        mowerSecond.setDirection(Direction.E);
+        mowerSecond.setInstructions(instructionsSecond);
+        tondeuses.add(mowerSecond);
 
         fileDataExpected.setCoordinateMax(coordinateMax);
         fileDataExpected.setTondeuses(tondeuses);
@@ -80,7 +84,7 @@ class ControleTondeuseServiceTest {
         writer.close();
 
         //WHEN
-        this.controleTondeuseService.calculPositionTondeuse(file);
+        this.controleMowerService.calculPositionTondeuse(file);
 
         //THEN
         String[] valueReturn= outputStreamCaptor.toString().split("\r\n");

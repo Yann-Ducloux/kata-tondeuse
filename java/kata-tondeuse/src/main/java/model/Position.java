@@ -1,5 +1,9 @@
 package model;
 
+/**
+ * @author Yann Ducloux
+ * Défini la Position.
+ */
 public class Position {
     int x;
     int y;

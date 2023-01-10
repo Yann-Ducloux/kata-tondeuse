@@ -2,15 +2,19 @@ package model;
 
 import java.util.List;
 
+/**
+ * @author Yann Ducloux
+ * Défini les données du fichier.
+ */
 public class FileData {
     CoordinateMax coordinateMax;
-    List<Tondeuse> tondeuses;
+    List<Mower> tondeuses;
 
     public void setCoordinateMax(CoordinateMax coordinateMax) {
         this.coordinateMax = coordinateMax;
     }
 
-    public void setTondeuses(List<Tondeuse> tondeuses) {
+    public void setTondeuses(List<Mower> tondeuses) {
         this.tondeuses = tondeuses;
     }
 
@@ -18,7 +22,7 @@ public class FileData {
         return coordinateMax;
     }
 
-    public List<Tondeuse> getTondeuses() {
+    public List<Mower> getTondeuses() {
         return tondeuses;
     }
 }

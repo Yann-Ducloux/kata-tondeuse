@@ -1,5 +1,9 @@
 package model;
 
+/**
+ * @author Yann Ducloux
+ * Défini la dimension de la pelouse.
+ */
 public class CoordinateMax {
     int xMax;
     int yMax;

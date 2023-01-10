@@ -12,9 +12,13 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * @author Yann DUCLOUX
+ * Service qui test le service qui gére la récupération des information à partir d'un fichier.
+ */
 class RecoverFileDataServiceTest {
     private final RecoverFileDataService recoverFileDataService = new RecoverFileDataService();
-    String FILE_NAME = "tondeuse.txt";
+    String FILE_NAME = "mower.txt";
     @Test
     public void recoverFileDataTest() throws IOException {
         //GIVEN
@@ -22,31 +26,31 @@ class RecoverFileDataServiceTest {
         CoordinateMax coordinateMax = new CoordinateMax();
         coordinateMax.setxMax(5);
         coordinateMax.setyMax(5);
-        List<Tondeuse> tondeuses = new ArrayList<Tondeuse>();
+        List<Mower> tondeuses = new ArrayList<Mower>();
 
-        Tondeuse tondeuseFirst = new Tondeuse();
+        Mower mowerFirst = new Mower();
         Position positionFirst = new Position();
         positionFirst.setX(1);
         positionFirst.setY(2);
         Instruction[] instructionsFirst = {Instruction.G, Instruction.A, Instruction.G,
                 Instruction.A, Instruction.G, Instruction.A,
                 Instruction.G, Instruction.A, Instruction.A};
-        tondeuseFirst.setPosition(positionFirst);
-        tondeuseFirst.setDirection(Direction.N);
-        tondeuseFirst.setInstructions(instructionsFirst);
-        tondeuses.add(tondeuseFirst);
+        mowerFirst.setPosition(positionFirst);
+        mowerFirst.setDirection(Direction.N);
+        mowerFirst.setInstructions(instructionsFirst);
+        tondeuses.add(mowerFirst);
 
-        Tondeuse tondeuseSecond = new Tondeuse();
+        Mower mowerSecond = new Mower();
         Position positionSecond = new Position();
         positionSecond.setX(3);
         positionSecond.setY(3);
         Instruction[] instructionsSecond = {Instruction.A, Instruction.A, Instruction.D,
                 Instruction.A, Instruction.A, Instruction.D, Instruction.A,
                 Instruction.D, Instruction.D, Instruction.A};
-        tondeuseSecond.setPosition(positionSecond);
-        tondeuseSecond.setDirection(Direction.E);
-        tondeuseSecond.setInstructions(instructionsSecond);
-        tondeuses.add(tondeuseSecond);
+        mowerSecond.setPosition(positionSecond);
+        mowerSecond.setDirection(Direction.E);
+        mowerSecond.setInstructions(instructionsSecond);
+        tondeuses.add(mowerSecond);
 
         fileDataExpected.setCoordinateMax(coordinateMax);
         fileDataExpected.setTondeuses(tondeuses);
