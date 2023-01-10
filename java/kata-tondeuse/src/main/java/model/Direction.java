@@ -1,8 +1,11 @@
 package model;
 
 public enum Direction {
-    NORTH('N'), WEST('W'), SOUTH('S'), EAST('E');
+    N, W, S, E;
+    private char direction;
 
-    Direction(char n) {
+    Direction() {
+
     }
+
 }

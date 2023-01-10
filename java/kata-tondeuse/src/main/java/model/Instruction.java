@@ -1,8 +1,8 @@
 package model;
 
 public enum Instruction {
-    LEFT('G'), RIGHT('D'), MOVE('A');
+    G, D, A;
 
-    Instruction(char g) {
+    Instruction() {
     }
 }

@@ -28,23 +28,23 @@ class RecoverFileDataServiceTest {
         Position positionFirst = new Position();
         positionFirst.setX(1);
         positionFirst.setY(2);
-        Instruction[] instructionsFirst = {Instruction.LEFT, Instruction.MOVE, Instruction.LEFT,
-                Instruction.MOVE, Instruction.LEFT, Instruction.MOVE,
-                Instruction.LEFT, Instruction.MOVE, Instruction.MOVE};
+        Instruction[] instructionsFirst = {Instruction.G, Instruction.A, Instruction.G,
+                Instruction.A, Instruction.G, Instruction.A,
+                Instruction.G, Instruction.A, Instruction.A};
         tondeuseFirst.setPosition(positionFirst);
-        tondeuseFirst.setDirection(Direction.NORTH);
+        tondeuseFirst.setDirection(Direction.N);
         tondeuseFirst.setInstructions(instructionsFirst);
         tondeuses.add(tondeuseFirst);
 
         Tondeuse tondeuseSecond = new Tondeuse();
         Position positionSecond = new Position();
-        positionSecond.setX(1);
-        positionSecond.setY(2);
-        Instruction[] instructionsSecond = {Instruction.MOVE, Instruction.MOVE, Instruction.RIGHT,
-                Instruction.MOVE, Instruction.MOVE, Instruction.RIGHT, Instruction.MOVE,
-                Instruction.RIGHT, Instruction.RIGHT, Instruction.MOVE};
+        positionSecond.setX(3);
+        positionSecond.setY(3);
+        Instruction[] instructionsSecond = {Instruction.A, Instruction.A, Instruction.D,
+                Instruction.A, Instruction.A, Instruction.D, Instruction.A,
+                Instruction.D, Instruction.D, Instruction.A};
         tondeuseSecond.setPosition(positionSecond);
-        tondeuseSecond.setDirection(Direction.NORTH);
+        tondeuseSecond.setDirection(Direction.E);
         tondeuseSecond.setInstructions(instructionsSecond);
         tondeuses.add(tondeuseSecond);
 

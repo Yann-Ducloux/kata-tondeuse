@@ -12,37 +12,37 @@ import java.util.List;
  */
 public class RecoverFileDataService {
     public FileData recoverData(File file) throws IOException {
+        FileReader fileReader = new FileReader(file);
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        String line = bufferedReader.readLine();
+        String[] lineCoordinateMax = line.split(" ");
         FileData fileData = new FileData();
-        CoordinateMax coordinateMax = new CoordinateMax();
-        coordinateMax.setxMax(5);
-        coordinateMax.setyMax(5);
         List<Tondeuse> tondeuses = new ArrayList<Tondeuse>();
-
-        Tondeuse tondeuseFirst = new Tondeuse();
-        Position positionFirst = new Position();
-        positionFirst.setX(1);
-        positionFirst.setY(2);
-        Instruction[] instructionsFirst = {Instruction.LEFT, Instruction.MOVE, Instruction.LEFT,
-                Instruction.MOVE, Instruction.LEFT, Instruction.MOVE,
-                Instruction.LEFT, Instruction.MOVE, Instruction.MOVE};
-        tondeuseFirst.setPosition(positionFirst);
-        tondeuseFirst.setDirection(Direction.NORTH);
-        tondeuseFirst.setInstructions(instructionsFirst);
-        tondeuses.add(tondeuseFirst);
-
-        Tondeuse tondeuseSecond = new Tondeuse();
-        Position positionSecond = new Position();
-        positionSecond.setX(1);
-        positionSecond.setY(2);
-        Instruction[] instructionsSecond = {Instruction.MOVE, Instruction.MOVE, Instruction.RIGHT,
-                Instruction.MOVE, Instruction.MOVE, Instruction.RIGHT, Instruction.MOVE,
-                Instruction.RIGHT, Instruction.RIGHT, Instruction.MOVE};
-        tondeuseSecond.setPosition(positionSecond);
-        tondeuseSecond.setDirection(Direction.NORTH);
-        tondeuseSecond.setInstructions(instructionsSecond);
-        tondeuses.add(tondeuseSecond);
-
+        CoordinateMax coordinateMax = new CoordinateMax();
+        coordinateMax.setxMax(Integer.parseInt(lineCoordinateMax[0]));
+        coordinateMax.setyMax(Integer.parseInt(lineCoordinateMax[0]));
         fileData.setCoordinateMax(coordinateMax);
+        while ((line = bufferedReader.readLine()) != null) {
+            String localisationTondeuse = line;
+            String[] splitLocalisationTondeuse = localisationTondeuse.split(" ");
+
+            Tondeuse tondeuse = new Tondeuse();
+            Position position = new Position();
+            position.setX(Integer.parseInt(splitLocalisationTondeuse[0]));
+            position.setY(Integer.parseInt(splitLocalisationTondeuse[1]));
+            tondeuse.setPosition(position);
+            tondeuse.setDirection(Direction.valueOf(splitLocalisationTondeuse[2]));
+
+            line = bufferedReader.readLine();
+            String[] splitInstruction = line.split("");
+
+            Instruction[] instructions = new Instruction[splitInstruction.length];
+            for (int i = 0; i < splitInstruction.length; i++) {
+                instructions[i] = Instruction.valueOf(splitInstruction[i]);
+            }
+            tondeuse.setInstructions(instructions);
+            tondeuses.add(tondeuse);
+        }
         fileData.setTondeuses(tondeuses);
         return fileData;
     }
