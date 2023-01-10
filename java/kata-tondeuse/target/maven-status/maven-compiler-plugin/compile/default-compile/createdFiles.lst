@@ -1,7 +1,0 @@
-model\CoordinateMax.class
-model\Instruction.class
-model\Position.class
-service\RecoverFileDataService.class
-model\FileData.class
-model\Direction.class
-model\Tondeuse.class
