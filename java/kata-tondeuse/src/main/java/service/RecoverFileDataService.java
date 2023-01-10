@@ -4,7 +4,10 @@ import model.*;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * The type Recover file data service.
@@ -13,14 +16,12 @@ import java.util.List;
  * Service qui gére la récupération des information à partir d'un fichier.
  */
 public class RecoverFileDataService {
+    
     /**
      * l'espace.
      */
     private static final String SPACE = " ";
-    /**
-     * le champ vide.
-     */
-    private static final String EMPTY_FIELD = "";
+
     /**
      * récupere les différentes information du fichier.
      *
@@ -52,12 +53,10 @@ public class RecoverFileDataService {
             mower.setDirection(Direction.valueOf(splitLocalisationTondeuse[2]));
 
             line = bufferedReader.readLine();
-            String[] splitInstruction = line.split(EMPTY_FIELD);
+            Instruction[] instructions = line.chars()
+                    .mapToObj(letter -> Instruction.valueOf(String.valueOf((char)letter)))
+                    .collect(Collectors.toList()).toArray(Instruction[]::new);
 
-            Instruction[] instructions = new Instruction[splitInstruction.length];
-            for (int i = 0; i < splitInstruction.length; i++) {
-                instructions[i] = Instruction.valueOf(splitInstruction[i]);
-            }
             mower.setInstructions(instructions);
             tondeuses.add(mower);
         }
