@@ -1,11 +1,24 @@
 package model;
 
 /**
+ * The enum Instruction.
+ *
  * @author Yann Ducloux
  * Défini l'instructrion.
  */
 public enum Instruction {
-    G, D, A;
+    /**
+     * Gauche.
+     */
+    G,
+    /**
+     * Droite.
+     */
+    D,
+    /**
+     * Avancer.
+     */
+    A;
 
     Instruction() {
     }

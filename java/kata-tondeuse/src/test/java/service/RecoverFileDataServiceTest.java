@@ -18,7 +18,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 class RecoverFileDataServiceTest {
     private final RecoverFileDataService recoverFileDataService = new RecoverFileDataService();
-    String FILE_NAME = "mower.txt";
+    /**
+     * le nom du fichier.
+     */
+    private static final String FILE_NAME = "mower.txt";
     @Test
     public void recoverFileDataTest() throws IOException {
         //GIVEN

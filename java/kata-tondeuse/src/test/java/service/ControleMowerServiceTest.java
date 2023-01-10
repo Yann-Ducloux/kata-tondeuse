@@ -15,9 +15,21 @@ import static org.junit.jupiter.api.Assertions.*;
  * Service qui test le service qui gére le contrôle des tondeuses.
  */
 class ControleMowerServiceTest {
-    String FILE_NAME = "mower.txt";
+    /**
+     * le nom du fichier.
+     */
+    private static final String FILE_NAME = "mower.txt";
+    /**
+     * the controle Mower Service.
+     */
     private final ControleMowerService controleMowerService = new ControleMowerService();
+    /**
+     * the standard out.
+     */
     private final PrintStream standardOut = System.out;
+    /**
+     * the output Stream Captor.
+     */
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
     @BeforeEach
     public void setUp() {

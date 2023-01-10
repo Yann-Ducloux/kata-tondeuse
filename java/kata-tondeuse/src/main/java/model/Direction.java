@@ -1,42 +1,75 @@
 package model;
 
 /**
+ * The enum Direction.
+ *
  * @author Yann Ducloux
  * Défini la direction.
  */
 public enum Direction {
-    N, W, S, E;
-    private char direction;
 
+    /**
+     * le nord.
+     */
+    N() {
+        public Direction turnLeft() {
+            return Direction.W;
+        }
+        public Direction turnRight() {
+            return Direction.E;
+        }
+    },
+
+    /**
+     * l'ouest.
+     */
+    W() {
+        public Direction turnLeft() {
+            return Direction.S;
+        }
+        public Direction turnRight() {
+            return Direction.N;
+        }
+    },
+
+    /**
+     * le sud.
+     */
+    S() {
+        public Direction turnLeft() {
+            return Direction.E;
+        }
+        public Direction turnRight() {
+            return Direction.W;
+        }
+    },
+
+    /**
+     * l'est.
+     */
+    E() {
+        public Direction turnLeft() {
+            return Direction.N;
+        }
+        public Direction turnRight() {
+            return Direction.S;
+        }
+    };
     Direction() {
 
     }
-    public Direction turnLeft(Direction direction) {
-        switch(direction) {
-            case N:
-                return Direction.W;
-            case W:
-                return Direction.S;
-            case S:
-                return Direction.E;
-            case E:
-                return Direction.N;
-            default:
-                return null;
-        }
-    }
-    public Direction turnRight(Direction direction) {
-        switch(direction) {
-            case N:
-                return Direction.E;
-            case E:
-                return Direction.S;
-            case S:
-                return Direction.W;
-            case W:
-                return Direction.N;
-            default:
-                return null;
-        }
-    }
+
+    /**
+     * calcul la direction quand on tourne à gauche.
+     *
+     * @return the direction
+     */
+    public abstract Direction turnLeft();
+
+    /**
+     * calcul la direction quand on tourne à droite.
+     *
+     * @return the direction
+     */
+    public abstract Direction turnRight();
 }

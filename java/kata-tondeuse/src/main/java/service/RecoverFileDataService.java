@@ -7,10 +7,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * The type Recover file data service.
+ *
  * @author Yann DUCLOUX
  * Service qui gére la récupération des information à partir d'un fichier.
  */
 public class RecoverFileDataService {
+    /**
+     * récupere les différentes information du fichier.
+     *
+     * @param file the file
+     * @return the file data
+     * @throws IOException the io exception
+     */
     public FileData recoverData(File file) throws IOException {
         FileReader fileReader = new FileReader(file);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -22,6 +31,7 @@ public class RecoverFileDataService {
         coordinateMax.setxMax(Integer.parseInt(lineCoordinateMax[0]));
         coordinateMax.setyMax(Integer.parseInt(lineCoordinateMax[0]));
         fileData.setCoordinateMax(coordinateMax);
+
         while ((line = bufferedReader.readLine()) != null) {
             String localisationTondeuse = line;
             String[] splitLocalisationTondeuse = localisationTondeuse.split(" ");
@@ -43,6 +53,7 @@ public class RecoverFileDataService {
             mower.setInstructions(instructions);
             tondeuses.add(mower);
         }
+
         fileData.setMowers(tondeuses);
         return fileData;
     }
