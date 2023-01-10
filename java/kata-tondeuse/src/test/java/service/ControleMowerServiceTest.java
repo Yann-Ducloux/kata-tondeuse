@@ -51,7 +51,7 @@ class ControleMowerServiceTest {
         writer.close();
 
         //WHEN
-        this.controleMowerService.calculPositionTondeuse(file);
+        this.controleMowerService.calculPositionMower(file);
 
         //THEN
         String[] valueReturn= outputStreamCaptor.toString().split("\r\n");

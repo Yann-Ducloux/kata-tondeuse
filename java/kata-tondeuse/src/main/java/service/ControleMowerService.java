@@ -13,7 +13,7 @@ public class ControleMowerService {
 
     private final RecoverFileDataService recoverFileDataService = new RecoverFileDataService();
 
-    public void calculPositionTondeuse(File file) throws IOException {
+    public void calculPositionMower(File file) throws IOException {
         FileData fileData = recoverFileDataService.recoverData(file);
         CoordinateMax coordinateMax = fileData.getCoordinateMax();
         for (Mower mower: fileData.getMowers()) {
