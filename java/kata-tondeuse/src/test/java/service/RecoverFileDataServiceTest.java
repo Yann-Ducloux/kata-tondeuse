@@ -35,9 +35,16 @@ class RecoverFileDataServiceTest {
         Position positionFirst = new Position();
         positionFirst.setX(1);
         positionFirst.setY(2);
-        Instruction[] instructionsFirst = {Instruction.G, Instruction.A, Instruction.G,
-                Instruction.A, Instruction.G, Instruction.A,
-                Instruction.G, Instruction.A, Instruction.A};
+        List<Instruction> instructionsFirst = new ArrayList<>();
+        instructionsFirst.add(Instruction.G);
+        instructionsFirst.add(Instruction.A);
+        instructionsFirst.add(Instruction.G);
+        instructionsFirst.add(Instruction.A);
+        instructionsFirst.add(Instruction.G);
+        instructionsFirst.add(Instruction.A);
+        instructionsFirst.add(Instruction.G);
+        instructionsFirst.add(Instruction.A);
+        instructionsFirst.add(Instruction.A);
         mowerFirst.setPosition(positionFirst);
         mowerFirst.setDirection(Direction.N);
         mowerFirst.setInstructions(instructionsFirst);
@@ -47,9 +54,17 @@ class RecoverFileDataServiceTest {
         Position positionSecond = new Position();
         positionSecond.setX(3);
         positionSecond.setY(3);
-        Instruction[] instructionsSecond = {Instruction.A, Instruction.A, Instruction.D,
-                Instruction.A, Instruction.A, Instruction.D, Instruction.A,
-                Instruction.D, Instruction.D, Instruction.A};
+        List<Instruction> instructionsSecond = new ArrayList<>();
+        instructionsSecond.add(Instruction.A);
+        instructionsSecond.add(Instruction.A);
+        instructionsSecond.add(Instruction.D);
+        instructionsSecond.add(Instruction.A);
+        instructionsSecond.add(Instruction.A);
+        instructionsSecond.add(Instruction.D);
+        instructionsSecond.add(Instruction.A);
+        instructionsSecond.add(Instruction.D);
+        instructionsSecond.add(Instruction.D);
+        instructionsSecond.add( Instruction.A);
         mowerSecond.setPosition(positionSecond);
         mowerSecond.setDirection(Direction.E);
         mowerSecond.setInstructions(instructionsSecond);
@@ -92,11 +107,11 @@ class RecoverFileDataServiceTest {
         for(int i = 0; i<fileDataExpected.getMowers().size(); i++) {
             assertEquals(fileDataExpected.getMowers().get(i).getDirection()
                     , fileDataActual.getMowers().get(i).getDirection());
-            assertEquals(fileDataExpected.getMowers().get(i).getInstructions().length
-                    , fileDataActual.getMowers().get(i).getInstructions().length);
-            for (int j = 0; j < fileDataExpected.getMowers().get(i).getInstructions().length; j++) {
-                assertEquals(fileDataExpected.getMowers().get(i).getInstructions()[j]
-                        , fileDataActual.getMowers().get(i).getInstructions()[j]);
+            assertEquals(fileDataExpected.getMowers().get(i).getInstructions().size()
+                    , fileDataActual.getMowers().get(i).getInstructions().size());
+            for (int j = 0; j < fileDataExpected.getMowers().get(i).getInstructions().size(); j++) {
+                assertEquals(fileDataExpected.getMowers().get(i).getInstructions().get(j)
+                        , fileDataActual.getMowers().get(i).getInstructions().get(j));
             }
             assertEquals(fileDataExpected.getMowers().get(i).getPosition().getX()
                     , fileDataActual.getMowers().get(i).getPosition().getX());

@@ -4,6 +4,7 @@ import model.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * The type Controle mower service.
@@ -25,9 +26,9 @@ public class ControleMowerService {
         FileData fileData = recoverFileDataService.recoverData(file);
         CoordinateMax coordinateMax = fileData.getCoordinateMax();
         for (Mower mower: fileData.getMowers()) {
-            Instruction[] instructions = mower.getInstructions();
-            for (int i = 0; i < instructions.length; i++) {
-                switch (instructions[i]) {
+            List<Instruction> instructions = mower.getInstructions();
+            for (int i = 0; i < instructions.size(); i++) {
+                switch (instructions.get(i)) {
                     case G:
                         mower.setDirection(mower.getDirection().turnLeft());
                         break;

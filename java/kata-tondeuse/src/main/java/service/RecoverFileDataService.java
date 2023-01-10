@@ -23,6 +23,11 @@ public class RecoverFileDataService {
     private static final String SPACE = " ";
 
     /**
+     * l'espace.
+     */
+    private static final String EMPTY_FIELD = " ";
+
+    /**
      * récupere les différentes information du fichier.
      *
      * @param file the file
@@ -53,9 +58,9 @@ public class RecoverFileDataService {
             mower.setDirection(Direction.valueOf(splitLocalisationTondeuse[2]));
 
             line = bufferedReader.readLine();
-            Instruction[] instructions = line.chars()
-                    .mapToObj(letter -> Instruction.valueOf(String.valueOf((char)letter)))
-                    .collect(Collectors.toList()).toArray(Instruction[]::new);
+            List<Instruction> instructions = Stream.of(line.split(""))
+                    .map (elem ->  Instruction.valueOf(elem))
+                    .collect(Collectors.toList());
 
             mower.setInstructions(instructions);
             tondeuses.add(mower);

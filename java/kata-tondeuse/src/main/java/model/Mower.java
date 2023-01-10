@@ -1,10 +1,11 @@
 package model;
 
+import java.util.List;
+
 /**
  * The type Mower.
  *
- * @author Yann Ducloux
- * Défini la tondeuse.
+ * @author Yann Ducloux Défini la tondeuse.
  */
 public class Mower {
     /**
@@ -18,7 +19,7 @@ public class Mower {
     /**
      * The Instructions.
      */
-    Instruction[] instructions;
+    List<Instruction> instructions;
 
     /**
      * Sets position.
@@ -39,11 +40,20 @@ public class Mower {
     }
 
     /**
+     * Gets instructions.
+     *
+     * @return the instructions
+     */
+    public List<Instruction> getInstructions() {
+        return instructions;
+    }
+
+    /**
      * Sets instructions.
      *
      * @param instructions the instructions
      */
-    public void setInstructions(Instruction[] instructions) {
+    public void setInstructions(List<Instruction> instructions) {
         this.instructions = instructions;
     }
 
@@ -65,14 +75,6 @@ public class Mower {
         return direction;
     }
 
-    /**
-     * Get instructions instruction [ ].
-     *
-     * @return the instruction [ ]
-     */
-    public Instruction[] getInstructions() {
-        return instructions;
-    }
 
     @Override
     public String toString() {
