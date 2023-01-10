@@ -25,7 +25,7 @@ public class RecoverFileDataService {
     /**
      * l'espace.
      */
-    private static final String EMPTY_FIELD = " ";
+    private static final String EMPTY_FIELD = "";
 
     /**
      * récupere les différentes information du fichier.
