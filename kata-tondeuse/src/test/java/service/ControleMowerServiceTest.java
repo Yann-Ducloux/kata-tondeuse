@@ -41,29 +41,9 @@ class ControleMowerServiceTest {
         String pointFinalForFirstTondeuseExpected = "1 3 N";
         String pointFinalForSecondeTondeuseExpected = "5 1 E";
         int numberOfTondeuseExpected = 2;
-        String coordinate = "5 5";
-        String directionFirst = "1 2 N";
-        String instructionsLineFirst = "GAGAGAGAA";
-        String directionSecond = "3 3 E";
-        String instructionsLineSecond = "AADAADADDA";
-
-        File file = new File(FILE_NAME);
-        FileWriter fileWriter = new FileWriter(file);
-        BufferedWriter writer = new BufferedWriter(fileWriter);
-        writer.write(coordinate);
-        writer.newLine();
-        writer.write(directionFirst);
-        writer.newLine();
-        writer.write(instructionsLineFirst);
-        writer.newLine();
-        writer.write(directionSecond);
-        writer.newLine();
-        writer.write(instructionsLineSecond);
-
-        writer.close();
 
         //WHEN
-        this.controleMowerService.calculPositionMower(file);
+        this.controleMowerService.calculPositionMower(MowerUtils.createFile());
 
         //THEN
         String[] valueReturn= outputStreamCaptor.toString().split("\r\n");

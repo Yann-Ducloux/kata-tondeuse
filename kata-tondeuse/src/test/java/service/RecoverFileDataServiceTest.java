@@ -3,9 +3,6 @@ package service;
 import model.*;
 import org.junit.jupiter.api.Test;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,76 +23,14 @@ class RecoverFileDataServiceTest {
     public void recoverFileDataTest() throws IOException {
         //GIVEN
         FileData fileDataExpected = new FileData();
-        CoordinateMax coordinateMax = new CoordinateMax();
-        coordinateMax.setxMax(5);
-        coordinateMax.setyMax(5);
         List<Mower> mowers = new ArrayList<Mower>();
-
-        Mower mowerFirst = new Mower();
-        Position positionFirst = new Position();
-        positionFirst.setX(1);
-        positionFirst.setY(2);
-        List<Instruction> instructionsFirst = new ArrayList<>();
-        instructionsFirst.add(Instruction.G);
-        instructionsFirst.add(Instruction.A);
-        instructionsFirst.add(Instruction.G);
-        instructionsFirst.add(Instruction.A);
-        instructionsFirst.add(Instruction.G);
-        instructionsFirst.add(Instruction.A);
-        instructionsFirst.add(Instruction.G);
-        instructionsFirst.add(Instruction.A);
-        instructionsFirst.add(Instruction.A);
-        mowerFirst.setPosition(positionFirst);
-        mowerFirst.setDirection(Direction.N);
-        mowerFirst.setInstructions(instructionsFirst);
-        mowers.add(mowerFirst);
-
-        Mower mowerSecond = new Mower();
-        Position positionSecond = new Position();
-        positionSecond.setX(3);
-        positionSecond.setY(3);
-        List<Instruction> instructionsSecond = new ArrayList<>();
-        instructionsSecond.add(Instruction.A);
-        instructionsSecond.add(Instruction.A);
-        instructionsSecond.add(Instruction.D);
-        instructionsSecond.add(Instruction.A);
-        instructionsSecond.add(Instruction.A);
-        instructionsSecond.add(Instruction.D);
-        instructionsSecond.add(Instruction.A);
-        instructionsSecond.add(Instruction.D);
-        instructionsSecond.add(Instruction.D);
-        instructionsSecond.add( Instruction.A);
-        mowerSecond.setPosition(positionSecond);
-        mowerSecond.setDirection(Direction.E);
-        mowerSecond.setInstructions(instructionsSecond);
-        mowers.add(mowerSecond);
-
-        fileDataExpected.setCoordinateMax(coordinateMax);
+        mowers.add(MowerUtils.getMowerFirst());
+        mowers.add(MowerUtils.getMowerSecond());
+        fileDataExpected.setCoordinateMax(MowerUtils.getCoordinateMax());
         fileDataExpected.setMowers(mowers);
 
-        String coordinate = "5 5";
-        String directionFirst = "1 2 N";
-        String instructionsLineFirst = "GAGAGAGAA";
-        String directionSecond = "3 3 E";
-        String instructionsLineSecond = "AADAADADDA";
-
-        File file = new File(FILE_NAME);
-        FileWriter fileWriter = new FileWriter(file);
-        BufferedWriter writer = new BufferedWriter(fileWriter);
-        writer.write(coordinate);
-        writer.newLine();
-        writer.write(directionFirst);
-        writer.newLine();
-        writer.write(instructionsLineFirst);
-        writer.newLine();
-        writer.write(directionSecond);
-        writer.newLine();
-        writer.write(instructionsLineSecond);
-
-        writer.close();
-
         //WHEN
-        FileData fileDataActual = recoverFileDataService.recoverData(file);
+        FileData fileDataActual = recoverFileDataService.recoverData(MowerUtils.createFile());
 
         //THEN
         assertEquals(fileDataExpected.getCoordinateMax().getxMax(),
