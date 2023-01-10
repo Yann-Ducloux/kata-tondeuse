@@ -23,7 +23,7 @@ public class RecoverFileDataService {
     private static final String SPACE = " ";
 
     /**
-     * l'espace.
+     * l'emplacement vide.
      */
     private static final String EMPTY_FIELD = "";
 
