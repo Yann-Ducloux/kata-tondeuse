@@ -14,6 +14,14 @@ import java.util.List;
  */
 public class RecoverFileDataService {
     /**
+     * l'espace.
+     */
+    private static final String SPACE = " ";
+    /**
+     * le champ vide.
+     */
+    private static final String EMPTY_FIELD = "";
+    /**
      * récupere les différentes information du fichier.
      *
      * @param file the file
@@ -24,17 +32,17 @@ public class RecoverFileDataService {
         FileReader fileReader = new FileReader(file);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         String line = bufferedReader.readLine();
-        String[] lineCoordinateMax = line.split(" ");
+        String[] lineCoordinateMax = line.split(SPACE);
         FileData fileData = new FileData();
         List<Mower> tondeuses = new ArrayList<Mower>();
         CoordinateMax coordinateMax = new CoordinateMax();
         coordinateMax.setxMax(Integer.parseInt(lineCoordinateMax[0]));
-        coordinateMax.setyMax(Integer.parseInt(lineCoordinateMax[0]));
+        coordinateMax.setyMax(Integer.parseInt(lineCoordinateMax[1]));
         fileData.setCoordinateMax(coordinateMax);
 
         while ((line = bufferedReader.readLine()) != null) {
             String localisationTondeuse = line;
-            String[] splitLocalisationTondeuse = localisationTondeuse.split(" ");
+            String[] splitLocalisationTondeuse = localisationTondeuse.split(SPACE);
 
             Mower mower = new Mower();
             Position position = new Position();
@@ -44,7 +52,7 @@ public class RecoverFileDataService {
             mower.setDirection(Direction.valueOf(splitLocalisationTondeuse[2]));
 
             line = bufferedReader.readLine();
-            String[] splitInstruction = line.split("");
+            String[] splitInstruction = line.split(EMPTY_FIELD);
 
             Instruction[] instructions = new Instruction[splitInstruction.length];
             for (int i = 0; i < splitInstruction.length; i++) {
