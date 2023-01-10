@@ -58,7 +58,7 @@ public class RecoverFileDataService {
             mower.setDirection(Direction.valueOf(splitLocalisationTondeuse[2]));
 
             line = bufferedReader.readLine();
-            List<Instruction> instructions = Stream.of(line.split(""))
+            List<Instruction> instructions = Stream.of(line.split(EMPTY_FIELD))
                     .map (elem ->  Instruction.valueOf(elem))
                     .collect(Collectors.toList());
 
