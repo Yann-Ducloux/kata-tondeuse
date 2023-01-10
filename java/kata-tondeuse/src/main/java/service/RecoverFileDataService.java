@@ -43,7 +43,7 @@ public class RecoverFileDataService {
             mower.setInstructions(instructions);
             tondeuses.add(mower);
         }
-        fileData.setTondeuses(tondeuses);
+        fileData.setMowers(tondeuses);
         return fileData;
     }
 }

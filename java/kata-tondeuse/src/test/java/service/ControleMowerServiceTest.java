@@ -33,7 +33,7 @@ class ControleMowerServiceTest {
         CoordinateMax coordinateMax = new CoordinateMax();
         coordinateMax.setxMax(5);
         coordinateMax.setyMax(5);
-        List<Mower> tondeuses = new ArrayList<Mower>();
+        List<Mower> mowers = new ArrayList<Mower>();
 
         Mower mowerFirst = new Mower();
         Position positionFirst = new Position();
@@ -45,7 +45,7 @@ class ControleMowerServiceTest {
         mowerFirst.setPosition(positionFirst);
         mowerFirst.setDirection(Direction.N);
         mowerFirst.setInstructions(instructionsFirst);
-        tondeuses.add(mowerFirst);
+        mowers.add(mowerFirst);
 
         Mower mowerSecond = new Mower();
         Position positionSecond = new Position();
@@ -57,10 +57,10 @@ class ControleMowerServiceTest {
         mowerSecond.setPosition(positionSecond);
         mowerSecond.setDirection(Direction.E);
         mowerSecond.setInstructions(instructionsSecond);
-        tondeuses.add(mowerSecond);
+        mowers.add(mowerSecond);
 
         fileDataExpected.setCoordinateMax(coordinateMax);
-        fileDataExpected.setTondeuses(tondeuses);
+        fileDataExpected.setMowers(mowers);
 
         String coordinate = "5 5";
         String directionFirst = "1 2 N";

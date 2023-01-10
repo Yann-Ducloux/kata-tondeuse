@@ -8,21 +8,21 @@ import java.util.List;
  */
 public class FileData {
     CoordinateMax coordinateMax;
-    List<Mower> tondeuses;
+    List<Mower> mowers;
 
     public void setCoordinateMax(CoordinateMax coordinateMax) {
         this.coordinateMax = coordinateMax;
     }
 
-    public void setTondeuses(List<Mower> tondeuses) {
-        this.tondeuses = tondeuses;
+    public void setMowers(List<Mower> mowers) {
+        this.mowers = mowers;
     }
 
     public CoordinateMax getCoordinateMax() {
         return coordinateMax;
     }
 
-    public List<Mower> getTondeuses() {
-        return tondeuses;
+    public List<Mower> getMowers() {
+        return mowers;
     }
 }

@@ -26,7 +26,7 @@ class RecoverFileDataServiceTest {
         CoordinateMax coordinateMax = new CoordinateMax();
         coordinateMax.setxMax(5);
         coordinateMax.setyMax(5);
-        List<Mower> tondeuses = new ArrayList<Mower>();
+        List<Mower> mowers = new ArrayList<Mower>();
 
         Mower mowerFirst = new Mower();
         Position positionFirst = new Position();
@@ -38,7 +38,7 @@ class RecoverFileDataServiceTest {
         mowerFirst.setPosition(positionFirst);
         mowerFirst.setDirection(Direction.N);
         mowerFirst.setInstructions(instructionsFirst);
-        tondeuses.add(mowerFirst);
+        mowers.add(mowerFirst);
 
         Mower mowerSecond = new Mower();
         Position positionSecond = new Position();
@@ -50,10 +50,10 @@ class RecoverFileDataServiceTest {
         mowerSecond.setPosition(positionSecond);
         mowerSecond.setDirection(Direction.E);
         mowerSecond.setInstructions(instructionsSecond);
-        tondeuses.add(mowerSecond);
+        mowers.add(mowerSecond);
 
         fileDataExpected.setCoordinateMax(coordinateMax);
-        fileDataExpected.setTondeuses(tondeuses);
+        fileDataExpected.setMowers(mowers);
 
         String coordinate = "5 5";
         String directionFirst = "1 2 N";
@@ -85,20 +85,20 @@ class RecoverFileDataServiceTest {
         assertEquals(fileDataExpected.getCoordinateMax().getyMax(),
                 fileDataActual.getCoordinateMax().getyMax());
 
-        assertEquals(fileDataExpected.getTondeuses().size(), fileDataActual.getTondeuses().size());
-        for(int i = 0; i<fileDataExpected.getTondeuses().size(); i++) {
-            assertEquals(fileDataExpected.getTondeuses().get(i).getDirection()
-                    , fileDataActual.getTondeuses().get(i).getDirection());
-            assertEquals(fileDataExpected.getTondeuses().get(i).getInstructions().length
-                    , fileDataActual.getTondeuses().get(i).getInstructions().length);
-            for (int j = 0; j < fileDataExpected.getTondeuses().get(i).getInstructions().length; j++) {
-                assertEquals(fileDataExpected.getTondeuses().get(i).getInstructions()[j]
-                        , fileDataActual.getTondeuses().get(i).getInstructions()[j]);
+        assertEquals(fileDataExpected.getMowers().size(), fileDataActual.getMowers().size());
+        for(int i = 0; i<fileDataExpected.getMowers().size(); i++) {
+            assertEquals(fileDataExpected.getMowers().get(i).getDirection()
+                    , fileDataActual.getMowers().get(i).getDirection());
+            assertEquals(fileDataExpected.getMowers().get(i).getInstructions().length
+                    , fileDataActual.getMowers().get(i).getInstructions().length);
+            for (int j = 0; j < fileDataExpected.getMowers().get(i).getInstructions().length; j++) {
+                assertEquals(fileDataExpected.getMowers().get(i).getInstructions()[j]
+                        , fileDataActual.getMowers().get(i).getInstructions()[j]);
             }
-            assertEquals(fileDataExpected.getTondeuses().get(i).getPosition().getX()
-                    , fileDataActual.getTondeuses().get(i).getPosition().getX());
-            assertEquals(fileDataExpected.getTondeuses().get(i).getPosition().getY()
-                    , fileDataActual.getTondeuses().get(i).getPosition().getY());
+            assertEquals(fileDataExpected.getMowers().get(i).getPosition().getX()
+                    , fileDataActual.getMowers().get(i).getPosition().getX());
+            assertEquals(fileDataExpected.getMowers().get(i).getPosition().getY()
+                    , fileDataActual.getMowers().get(i).getPosition().getY());
         }
     }
 }
