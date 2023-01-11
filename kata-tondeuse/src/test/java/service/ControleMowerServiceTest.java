@@ -1,14 +1,13 @@
 package service;
 
-import model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author Yann DUCLOUX
@@ -16,9 +15,9 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class ControleMowerServiceTest {
     /**
-     * le nom du fichier.
+     * le saut de ligne.
      */
-    private static final String FILE_NAME = "mower.txt";
+    private static final String LINE_BREAK = "\n";
     /**
      * the controle Mower Service.
      */
@@ -31,24 +30,26 @@ class ControleMowerServiceTest {
      * the output Stream Captor.
      */
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+
     @BeforeEach
     public void setUp() {
         System.setOut(new PrintStream(outputStreamCaptor));
     }
+
     @Test
-    public void calculPositionTondeuseTest() throws IOException {
+    public void calculPositionMowerTest() throws IOException {
         //GIVEN
-        String pointFinalForFirstTondeuseExpected = "1 3 N";
-        String pointFinalForSecondeTondeuseExpected = "5 1 E";
-        int numberOfTondeuseExpected = 2;
+        String pointFinalForFirstMowerExpected = "1 3 N";
+        String pointFinalForSecondeMowerExpected = "5 1 E";
+        int numberOfMowerExpected = 2;
 
         //WHEN
         this.controleMowerService.calculPositionMower(MowerUtils.createFile());
 
         //THEN
-        String[] valueReturn= outputStreamCaptor.toString().split("\r\n");
-        assertEquals(numberOfTondeuseExpected, valueReturn.length);
-        assertEquals(pointFinalForFirstTondeuseExpected, valueReturn[0]);
-        assertEquals(pointFinalForSecondeTondeuseExpected, valueReturn[1]);
+        String[] lineSystemOutPrintln = outputStreamCaptor.toString().split(LINE_BREAK);
+        assertEquals(numberOfMowerExpected, lineSystemOutPrintln.length);
+        assertEquals(pointFinalForFirstMowerExpected, lineSystemOutPrintln[0]);
+        assertEquals(pointFinalForSecondeMowerExpected, lineSystemOutPrintln[1]);
     }
 }
