@@ -17,7 +17,7 @@ class ControleMowerServiceTest {
     /**
      * le saut de ligne.
      */
-    private static final String LINE_BREAK = "\r\n";
+    private static final String LINE_BREAK = System.getProperty("line.separator");
     /**
      * the controle Mower Service.
      */
