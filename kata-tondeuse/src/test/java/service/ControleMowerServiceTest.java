@@ -37,19 +37,19 @@ class ControleMowerServiceTest {
     }
 
     @Test
-    public void calculPositionMowerTest() throws IOException {
+    public void calculationMowerTest() throws IOException {
         //GIVEN
         String pointFinalForFirstMowerExpected = "1 3 N";
-        String pointFinalForSecondeMowerExpected = "5 1 E";
+        String pointFinalForSecondMowerExpected = "5 1 E";
         int numberOfMowerExpected = 2;
 
         //WHEN
-        this.controleMowerService.calculPositionMower(MowerUtils.createFile());
+        this.controleMowerService.calculPositionMower(MowerUtils.getFileData());
 
         //THEN
         String[] lineSystemOutPrintln = outputStreamCaptor.toString().split(LINE_BREAK);
         assertEquals(numberOfMowerExpected, lineSystemOutPrintln.length);
         assertEquals(pointFinalForFirstMowerExpected, lineSystemOutPrintln[0]);
-        assertEquals(pointFinalForSecondeMowerExpected, lineSystemOutPrintln[1]);
+        assertEquals(pointFinalForSecondMowerExpected, lineSystemOutPrintln[1]);
     }
 }

@@ -85,9 +85,17 @@ public class MowerUtils {
     }
 
     static CoordinateMax getCoordinateMax() {
-        CoordinateMax coordinateMax = new CoordinateMax();
-        coordinateMax.setxMax(5);
-        coordinateMax.setyMax(5);
+        CoordinateMax coordinateMax = new CoordinateMax(5, 5);
         return coordinateMax;
+    }
+
+    static FileData getFileData() {
+        FileData fileData = new FileData();
+        List<Mower> mowers = new ArrayList<Mower>();
+        mowers.add(MowerUtils.getMowerFirst());
+        mowers.add(MowerUtils.getMowerSecond());
+        fileData.setCoordinateMax(MowerUtils.getCoordinateMax());
+        fileData.setMowers(mowers);
+        return fileData;
     }
 }

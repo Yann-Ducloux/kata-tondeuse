@@ -16,6 +16,11 @@ public class CoordinateMax {
      */
     int yMax;
 
+    public CoordinateMax(int xMax, int yMax) {
+        this.xMax = xMax;
+        this.yMax = yMax;
+    }
+
     /**
      * Sets max.
      *

@@ -19,11 +19,10 @@ public class ControleMowerService {
     /**
      * Calculer la position final des tondeuses.
      *
-     * @param file the file
+     * @param fileData the fileData
      * @throws IOException the io exception
      */
-    public void calculPositionMower(File file) throws IOException {
-        FileData fileData = recoverFileDataService.recoverData(file);
+    public void calculPositionMower(FileData fileData) throws IOException {
         CoordinateMax coordinateMax = fileData.getCoordinateMax();
         for (Mower mower: fileData.getMowers()) {
             List<Instruction> instructions = mower.getInstructions();

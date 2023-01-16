@@ -41,9 +41,7 @@ public class RecoverFileDataService {
         String[] lineCoordinateMax = line.split(SPACE);
         FileData fileData = new FileData();
         List<Mower> mowers = new ArrayList<Mower>();
-        CoordinateMax coordinateMax = new CoordinateMax();
-        coordinateMax.setxMax(Integer.parseInt(lineCoordinateMax[0]));
-        coordinateMax.setyMax(Integer.parseInt(lineCoordinateMax[1]));
+        CoordinateMax coordinateMax = new CoordinateMax(Integer.parseInt(lineCoordinateMax[0]), Integer.parseInt(lineCoordinateMax[1]));
         fileData.setCoordinateMax(coordinateMax);
 
         while ((line = bufferedReader.readLine()) != null) {

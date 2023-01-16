@@ -22,12 +22,7 @@ class RecoverFileDataServiceTest {
     @Test
     public void recoverFileDataTest() throws IOException {
         //GIVEN
-        FileData fileDataExpected = new FileData();
-        List<Mower> mowers = new ArrayList<Mower>();
-        mowers.add(MowerUtils.getMowerFirst());
-        mowers.add(MowerUtils.getMowerSecond());
-        fileDataExpected.setCoordinateMax(MowerUtils.getCoordinateMax());
-        fileDataExpected.setMowers(mowers);
+        FileData fileDataExpected = MowerUtils.getFileData();
 
         //WHEN
         FileData fileDataActual = recoverFileDataService.recoverData(MowerUtils.createFile());
