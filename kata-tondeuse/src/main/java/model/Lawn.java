@@ -20,12 +20,12 @@ public class Lawn {
     private static final String EMPTY_FIELD = "";
     CoordinateMax coordinateMax;
     List<Mower> mowers;
-    public void setCoordinateMax(CoordinateMax coordinateMax) {
+
+    public Lawn(CoordinateMax coordinateMax, List<Mower> mowers) {
         this.coordinateMax = coordinateMax;
-    }
-    public void setMowers(List<Mower> mowers) {
         this.mowers = mowers;
     }
+
     public CoordinateMax getCoordinateMax() {
         return coordinateMax;
     }
@@ -40,33 +40,23 @@ public class Lawn {
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         String line = bufferedReader.readLine();
         String[] lineCoordinateMax = line.split(SPACE);
-        Lawn lawn = new Lawn();
         List<Mower> mowers = new ArrayList<Mower>();
         CoordinateMax coordinateMax = new CoordinateMax(Integer.parseInt(lineCoordinateMax[0]), Integer.parseInt(lineCoordinateMax[1]));
-        lawn.setCoordinateMax(coordinateMax);
 
         while ((line = bufferedReader.readLine()) != null) {
             String localisationMower = line;
             String[] splitLocalisationMower = localisationMower.split(SPACE);
 
-            Mower mower = new Mower();
-            Position position = new Position();
-            position.setX(Integer.parseInt(splitLocalisationMower[0]));
-            position.setY(Integer.parseInt(splitLocalisationMower[1]));
-            mower.setPosition(position);
-            mower.setDirection(Direction.valueOf(splitLocalisationMower[2]));
+            Position position = new Position(Integer.parseInt(splitLocalisationMower[0]), Integer.parseInt(splitLocalisationMower[1]));
+            Direction direction = Direction.valueOf(splitLocalisationMower[2]);
 
             line = bufferedReader.readLine();
             List<Instruction> instructions = Stream.of(line.split(EMPTY_FIELD))
                     .map (elem ->  Instruction.valueOf(elem))
                     .collect(Collectors.toList());
-
-            mower.setInstructions(instructions);
-            mowers.add(mower);
+            mowers.add(new Mower(position, direction, instructions));
         }
-
-        lawn.setMowers(mowers);
-        return lawn;
+        return new Lawn(coordinateMax, mowers);
     }
 
 }

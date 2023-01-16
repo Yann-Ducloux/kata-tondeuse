@@ -37,10 +37,7 @@ public class MowerUtils {
     }
     
     static Mower getMowerFirst() {
-        Mower mower = new Mower();
-        Position position = new Position();
-        position.setX(1);
-        position.setY(2);
+        Position position = new Position(1,2);
         List<Instruction> instructions = new ArrayList<>();
         instructions.add(Instruction.G);
         instructions.add(Instruction.A);
@@ -51,17 +48,11 @@ public class MowerUtils {
         instructions.add(Instruction.G);
         instructions.add(Instruction.A);
         instructions.add(Instruction.A);
-        mower.setPosition(position);
-        mower.setDirection(Direction.N);
-        mower.setInstructions(instructions);
-        return mower;
+        return new Mower(position, Direction.N, instructions);
     }
 
     static Mower getMowerSecond() {
-        Mower mowerSecond = new Mower();
-        Position positionSecond = new Position();
-        positionSecond.setX(3);
-        positionSecond.setY(3);
+        Position positionSecond = new Position(3,3);
         List<Instruction> instructionsSecond = new ArrayList<>();
         instructionsSecond.add(Instruction.A);
         instructionsSecond.add(Instruction.A);
@@ -73,10 +64,7 @@ public class MowerUtils {
         instructionsSecond.add(Instruction.D);
         instructionsSecond.add(Instruction.D);
         instructionsSecond.add( Instruction.A);
-        mowerSecond.setPosition(positionSecond);
-        mowerSecond.setDirection(Direction.E);
-        mowerSecond.setInstructions(instructionsSecond);
-        return mowerSecond;
+        return new Mower(positionSecond, Direction.E, instructionsSecond);
     }
 
     static CoordinateMax getCoordinateMax() {
@@ -85,12 +73,9 @@ public class MowerUtils {
     }
 
     static Lawn getFileData() {
-        Lawn lawn = new Lawn();
         List<Mower> mowers = new ArrayList<Mower>();
         mowers.add(MowerUtils.getMowerFirst());
         mowers.add(MowerUtils.getMowerSecond());
-        lawn.setCoordinateMax(MowerUtils.getCoordinateMax());
-        lawn.setMowers(mowers);
-        return lawn;
+        return new Lawn(MowerUtils.getCoordinateMax(), mowers);
     }
 }

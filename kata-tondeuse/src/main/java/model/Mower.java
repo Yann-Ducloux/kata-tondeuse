@@ -13,20 +13,22 @@ public class Mower {
     Direction direction;
     List<Instruction> instructions;
 
-    public void setPosition(Position position) {
+    public Mower(Position position, Direction direction, List<Instruction> instructions) {
         this.position = position;
+        this.direction = direction;
+        this.instructions = instructions;
     }
 
-    public void setDirection(Direction direction) {
+    public Mower() {
+
+    }
+
+    public void nextDirection(Direction direction) {
         this.direction = direction;
     }
 
     public List<Instruction> getInstructions() {
         return instructions;
-    }
-
-    public void setInstructions(List<Instruction> instructions) {
-        this.instructions = instructions;
     }
 
     public Position getPosition() {
@@ -51,10 +53,10 @@ public class Mower {
             for (int i = 0; i < instructions.size(); i++) {
                 switch (instructions.get(i)) {
                     case G:
-                        mower.setDirection(mower.getDirection().turnLeft());
+                        mower.nextDirection(mower.getDirection().turnLeft());
                         break;
                     case D:
-                        mower.setDirection(mower.getDirection().turnRight());
+                        mower.nextDirection(mower.getDirection().turnRight());
                         break;
                     case A:
                         mower.getPosition().calculPosition(mower.getDirection(), coordinateMax);
