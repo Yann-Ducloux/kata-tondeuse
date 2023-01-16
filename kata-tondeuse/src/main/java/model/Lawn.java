@@ -1,22 +1,23 @@
-package service;
+package model;
 
-import model.*;
-
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * The type Recover file data service.
+ * The type Lown.
  *
- * @author Yann DUCLOUX
- * Service qui gére la récupération des information à partir d'un fichier.
+ * @author Yann Ducloux
+ * Défini les données du fichier.
  */
-public class RecoverFileDataService {
-    
+public class Lawn {
+
+
     /**
      * l'espace.
      */
@@ -26,23 +27,61 @@ public class RecoverFileDataService {
      * l'emplacement vide.
      */
     private static final String EMPTY_FIELD = "";
+    /**
+     * The Coordinate max.
+     */
+    CoordinateMax coordinateMax;
+    /**
+     * The Mowers.
+     */
+    List<Mower> mowers;
 
     /**
-     * récupere les différentes information du fichier.
+     * Sets coordinate max.
      *
-     * @param file the file
-     * @return the file data
-     * @throws IOException the io exception
+     * @param coordinateMax the coordinate max
      */
-    public FileData recoverData(File file) throws IOException {
+    public void setCoordinateMax(CoordinateMax coordinateMax) {
+        this.coordinateMax = coordinateMax;
+    }
+
+    /**
+     * Sets mowers.
+     *
+     * @param mowers the mowers
+     */
+    public void setMowers(List<Mower> mowers) {
+        this.mowers = mowers;
+    }
+
+    /**
+     * Gets coordinate max.
+     *
+     * @return the coordinate max
+     */
+    public CoordinateMax getCoordinateMax() {
+        return coordinateMax;
+    }
+
+    /**
+     * Gets mowers.
+     *
+     * @return the mowers
+     */
+    public List<Mower> getMowers() {
+        return mowers;
+    }
+
+
+    public static Lawn execute(File file) throws IOException {
         FileReader fileReader = new FileReader(file);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         String line = bufferedReader.readLine();
         String[] lineCoordinateMax = line.split(SPACE);
-        FileData fileData = new FileData();
+        Lawn lawn = new Lawn();
         List<Mower> mowers = new ArrayList<Mower>();
         CoordinateMax coordinateMax = new CoordinateMax(Integer.parseInt(lineCoordinateMax[0]), Integer.parseInt(lineCoordinateMax[1]));
-        fileData.setCoordinateMax(coordinateMax);
+        lawn.setCoordinateMax(coordinateMax);
 
         while ((line = bufferedReader.readLine()) != null) {
             String localisationMower = line;
@@ -64,7 +103,8 @@ public class RecoverFileDataService {
             mowers.add(mower);
         }
 
-        fileData.setMowers(mowers);
-        return fileData;
+        lawn.setMowers(mowers);
+        return lawn;
     }
+
 }

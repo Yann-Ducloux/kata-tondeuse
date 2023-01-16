@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 /**
  * The type Coordinate max.
  *
@@ -22,24 +24,6 @@ public class CoordinateMax {
     }
 
     /**
-     * Sets max.
-     *
-     * @param xMax the x max
-     */
-    public void setxMax(int xMax) {
-        this.xMax = xMax;
-    }
-
-    /**
-     * Sets max.
-     *
-     * @param yMax the y max
-     */
-    public void setyMax(int yMax) {
-        this.yMax = yMax;
-    }
-
-    /**
      * Gets max.
      *
      * @return the max
@@ -55,5 +39,18 @@ public class CoordinateMax {
      */
     public int getyMax() {
         return yMax;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CoordinateMax that = (CoordinateMax) o;
+        return xMax == that.xMax && yMax == that.yMax;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(xMax, yMax);
     }
 }

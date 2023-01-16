@@ -1,5 +1,6 @@
 package model;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -79,5 +80,27 @@ public class Mower {
     @Override
     public String toString() {
         return position.getX() + " " + position.getY() + " " + direction;
+    }
+
+
+    public void lastPosition(Lawn lawn) throws IOException {
+        CoordinateMax coordinateMax = lawn.getCoordinateMax();
+        for (Mower mower: lawn.getMowers()) {
+            List<Instruction> instructions = mower.getInstructions();
+            for (int i = 0; i < instructions.size(); i++) {
+                switch (instructions.get(i)) {
+                    case G:
+                        mower.setDirection(mower.getDirection().turnLeft());
+                        break;
+                    case D:
+                        mower.setDirection(mower.getDirection().turnRight());
+                        break;
+                    case A:
+                        mower.getPosition().calculPosition(mower.getDirection(), coordinateMax);
+                        break;
+                }
+            }
+            System.out.println(mower.toString());
+        }
     }
 }

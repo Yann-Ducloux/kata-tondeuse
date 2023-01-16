@@ -1,4 +1,4 @@
-package service;
+package model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -7,21 +7,14 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * @author Yann DUCLOUX
- * Service qui test le service qui gére le contrôle des tondeuses.
- */
-class ControleMowerServiceTest {
+class MowerTest {
+
     /**
      * le saut de ligne.
      */
     private static final String LINE_BREAK = System.getProperty("line.separator");
-    /**
-     * the controle Mower Service.
-     */
-    private final ControleMowerService controleMowerService = new ControleMowerService();
     /**
      * the standard out.
      */
@@ -37,14 +30,15 @@ class ControleMowerServiceTest {
     }
 
     @Test
-    public void calculationMowerTest() throws IOException {
+    public void lastPosition() throws IOException {
         //GIVEN
         String pointFinalForFirstMowerExpected = "1 3 N";
         String pointFinalForSecondMowerExpected = "5 1 E";
         int numberOfMowerExpected = 2;
+        Mower mower = new Mower();
 
         //WHEN
-        this.controleMowerService.calculPositionMower(MowerUtils.getFileData());
+        mower.lastPosition(MowerUtils.getFileData());
 
         //THEN
         String[] lineSystemOutPrintln = outputStreamCaptor.toString().split(LINE_BREAK);

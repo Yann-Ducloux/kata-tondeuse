@@ -1,6 +1,4 @@
-package service;
-
-import model.*;
+package model;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -89,13 +87,13 @@ public class MowerUtils {
         return coordinateMax;
     }
 
-    static FileData getFileData() {
-        FileData fileData = new FileData();
+    static Lawn getFileData() {
+        Lawn lawn = new Lawn();
         List<Mower> mowers = new ArrayList<Mower>();
         mowers.add(MowerUtils.getMowerFirst());
         mowers.add(MowerUtils.getMowerSecond());
-        fileData.setCoordinateMax(MowerUtils.getCoordinateMax());
-        fileData.setMowers(mowers);
-        return fileData;
+        lawn.setCoordinateMax(MowerUtils.getCoordinateMax());
+        lawn.setMowers(mowers);
+        return lawn;
     }
 }
