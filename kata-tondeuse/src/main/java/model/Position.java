@@ -7,57 +7,22 @@ package model;
  * Défini la Position.
  */
 public class Position {
-    /**
-     * The X.
-     */
     int x;
-    /**
-     * The Y.
-     */
     int y;
 
-    /**
-     * Sets x.
-     *
-     * @param x the x
-     */
     public void setX(int x) {
         this.x = x;
     }
-
-    /**
-     * Sets y.
-     *
-     * @param y the y
-     */
     public void setY(int y) {
         this.y = y;
     }
-
-    /**
-     * Gets x.
-     *
-     * @return the x
-     */
     public int getX() {
         return x;
     }
-
-    /**
-     * Gets y.
-     *
-     * @return the y
-     */
     public int getY() {
         return y;
     }
 
-    /**
-     * Calculer la prochaine position.
-     *
-     * @param direction     the direction
-     * @param coordonneeMax the coordonnee max
-     */
     public void calculPosition(Direction direction, CoordinateMax coordonneeMax) {
         switch(direction){
             case N:

@@ -9,9 +9,6 @@ import java.util.List;
 
 public class MowerUtils {
 
-    /**
-     * le nom du fichier.
-     */
     private static final String FILE_NAME = "mower.txt";
 
     static File createFile() throws IOException {

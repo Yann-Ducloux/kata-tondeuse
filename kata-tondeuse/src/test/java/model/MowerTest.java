@@ -11,17 +11,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MowerTest {
 
-    /**
-     * le saut de ligne.
-     */
     private static final String LINE_BREAK = System.getProperty("line.separator");
-    /**
-     * the standard out.
-     */
     private final PrintStream standardOut = System.out;
-    /**
-     * the output Stream Captor.
-     */
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
     @BeforeEach
