@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -18,16 +19,16 @@ import java.util.stream.Stream;
 public class Lawn {
     private static final String SPACE = " ";
     private static final String EMPTY_FIELD = "";
-    CoordinateMax coordinateMax;
+    Dimension dimension;
     List<Mower> mowers;
 
-    public Lawn(CoordinateMax coordinateMax, List<Mower> mowers) {
-        this.coordinateMax = coordinateMax;
+    public Lawn(Dimension dimension, List<Mower> mowers) {
+        this.dimension = dimension;
         this.mowers = mowers;
     }
 
-    public CoordinateMax getCoordinateMax() {
-        return coordinateMax;
+    public Dimension getCoordinateMax() {
+        return dimension;
     }
 
     public List<Mower> getMowers() {
@@ -41,7 +42,7 @@ public class Lawn {
         String line = bufferedReader.readLine();
         String[] lineCoordinateMax = line.split(SPACE);
         List<Mower> mowers = new ArrayList<Mower>();
-        CoordinateMax coordinateMax = new CoordinateMax(Integer.parseInt(lineCoordinateMax[0]), Integer.parseInt(lineCoordinateMax[1]));
+        Dimension dimension = new Dimension(Integer.parseInt(lineCoordinateMax[0]), Integer.parseInt(lineCoordinateMax[1]));
 
         while ((line = bufferedReader.readLine()) != null) {
             String localisationMower = line;
@@ -56,7 +57,19 @@ public class Lawn {
                     .collect(Collectors.toList());
             mowers.add(new Mower(position, direction, instructions));
         }
-        return new Lawn(coordinateMax, mowers);
+        return new Lawn(dimension, mowers);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Lawn lawn = (Lawn) o;
+        return Objects.equals(dimension, lawn.dimension) && Objects.equals(mowers, lawn.mowers);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(dimension, mowers);
+    }
 }

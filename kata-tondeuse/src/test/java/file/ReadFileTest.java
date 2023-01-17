@@ -1,20 +1,42 @@
-package model;
+package file;
 
+import model.Lawn;
+import model.MowerUtils;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class LawnTest {
+class ReadFileTest {
 
     @Test
     void execute() throws IOException {
         //GIVEN
-        Lawn lawnExpected = MowerUtils.getFileData();
+        List<String> documentExpected = FileCreateUtils.contentFile();
+        ReadFile readFile= new ReadFile();
 
         //WHEN
-        Lawn lawnActual = Lawn.execute(MowerUtils.createFile());
+        List<String> documentActual = readFile.execute(FileCreateUtils.createFile());
+
+        //THEN
+        assertEquals(documentExpected.size(), documentActual.size());
+        for (int i=0; i<documentExpected.size(); i++) {
+            assertEquals(documentExpected.get(i), documentActual.get(i));
+        }
+    }
+
+    @Test
+    void transciption() {
+        //GIVEN
+        List<String> document = FileCreateUtils.contentFile();
+        ReadFile readFile = new ReadFile();
+        Lawn lawnExpected = FileCreateUtils.getFileData();
+
+        //WHEN
+        Lawn lawnActual = readFile.transciption(document);
 
         //THEN
         assertTrue(lawnExpected.getCoordinateMax().equals(lawnActual.getCoordinateMax()));

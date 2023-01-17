@@ -22,10 +22,10 @@ public class Position {
         return y;
     }
 
-    public void calculPosition(Direction direction, CoordinateMax coordonneeMax) {
+    public void calculPosition(Direction direction, Dimension dimension) {
         switch(direction){
             case N:
-                if(this.y < coordonneeMax.getyMax()) {
+                if(dimension.YInZone(this.y)) {
                     this.y++;
                 }
                 break;
@@ -35,7 +35,7 @@ public class Position {
                 }
                 break;
             case E:
-                if(this.x < coordonneeMax.getxMax()) {
+                if(dimension.XInZone(this.x)) {
                     this.x++;
                 }
                 break;

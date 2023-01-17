@@ -2,6 +2,7 @@ package model;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * The type Mower.
@@ -45,9 +46,21 @@ public class Mower {
         return position.getX() + " " + position.getY() + " " + direction;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Mower mower = (Mower) o;
+        return Objects.equals(position, mower.position) && direction == mower.direction && Objects.equals(instructions, mower.instructions);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(position, direction, instructions);
+    }
 
     public void lastPosition(Lawn lawn) throws IOException {
-        CoordinateMax coordinateMax = lawn.getCoordinateMax();
+        Dimension dimension = lawn.getCoordinateMax();
         for (Mower mower: lawn.getMowers()) {
             List<Instruction> instructions = mower.getInstructions();
             for (int i = 0; i < instructions.size(); i++) {
@@ -59,7 +72,7 @@ public class Mower {
                         mower.nextDirection(mower.getDirection().turnRight());
                         break;
                     case A:
-                        mower.getPosition().calculPosition(mower.getDirection(), coordinateMax);
+                        mower.getPosition().calculPosition(mower.getDirection(), dimension);
                         break;
                 }
             }

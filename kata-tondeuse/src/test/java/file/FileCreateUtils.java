@@ -1,4 +1,6 @@
-package model;
+package file;
+
+import model.*;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -7,10 +9,18 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MowerUtils {
+public class FileCreateUtils {
 
     private static final String FILE_NAME = "mower.txt";
-
+    static List<String> contentFile() {
+        List<String> document = new ArrayList<String>();
+        document.add("5 5");
+        document.add("1 2 N");
+        document.add("GAGAGAGAA");
+        document.add("3 3 E");
+        document.add("AADAADADDA");
+        return document;
+    }
     static File createFile() throws IOException {
 
         String coordinate = "5 5";
@@ -35,7 +45,8 @@ public class MowerUtils {
         writer.close();
         return file;
     }
-    
+
+
     static Mower getMowerFirst() {
         Position position = new Position(1,2);
         List<Instruction> instructions = new ArrayList<>();
@@ -67,15 +78,16 @@ public class MowerUtils {
         return new Mower(positionSecond, Direction.E, instructionsSecond);
     }
 
-    static Dimension getCoordinateMax() {
+    static Dimension getDimension() {
         Dimension dimension = new Dimension(5, 5);
         return dimension;
     }
 
+
     static Lawn getFileData() {
         List<Mower> mowers = new ArrayList<Mower>();
-        mowers.add(MowerUtils.getMowerFirst());
-        mowers.add(MowerUtils.getMowerSecond());
-        return new Lawn(MowerUtils.getCoordinateMax(), mowers);
+        mowers.add(FileCreateUtils.getMowerFirst());
+        mowers.add(FileCreateUtils.getMowerSecond());
+        return new Lawn(FileCreateUtils.getDimension(), mowers);
     }
 }
