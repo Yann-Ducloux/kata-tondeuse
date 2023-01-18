@@ -1,11 +1,11 @@
 package main;
 
-import file.FileCreateUtils;
 import file.ReadFile;
 import model.Lawn;
 import model.Mower;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import utils.LawnUtils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -34,7 +34,7 @@ public class mainTest {
         int numberOfMowerExpected = 2;
 
         //WHEN
-        List<String> document = readFile.execute(FileCreateUtils.createFile());
+        List<String> document = readFile.execute(LawnUtils.fileOfLawn());
         Lawn lawn = readFile.transcription(document);
         mower.lastPosition(lawn);
 

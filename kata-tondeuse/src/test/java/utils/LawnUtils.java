@@ -1,4 +1,6 @@
-package model;
+package utils;
+
+import model.*;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -7,11 +9,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MowerUtils {
+public class LawnUtils {
 
     private static final String FILE_NAME = "mower.txt";
 
-    static File createFile() throws IOException {
+    public static File fileOfLawn() throws IOException {
 
         String coordinate = "5 5";
         String direction = "1 2 N";
@@ -35,8 +37,19 @@ public class MowerUtils {
         writer.close();
         return file;
     }
-    
-    static Mower getMowerFirst() {
+
+
+    public static List<String> contentFileOfLawn() {
+        List<String> document = new ArrayList<String>();
+        document.add("5 5");
+        document.add("1 2 N");
+        document.add("GAGAGAGAA");
+        document.add("3 3 E");
+        document.add("AADAADADDA");
+        return document;
+    }
+
+    static Mower mowerFirstBeginPosition() {
         Position position = new Position(1,2);
         List<Instruction> instructions = new ArrayList<>();
         instructions.add(Instruction.G);
@@ -51,52 +64,52 @@ public class MowerUtils {
         return new Mower(position, Direction.N, instructions);
     }
 
-    static Mower getMowerSecond() {
-        Position positionSecond = new Position(3,3);
-        List<Instruction> instructionsSecond = new ArrayList<>();
-        instructionsSecond.add(Instruction.A);
-        instructionsSecond.add(Instruction.A);
-        instructionsSecond.add(Instruction.D);
-        instructionsSecond.add(Instruction.A);
-        instructionsSecond.add(Instruction.A);
-        instructionsSecond.add(Instruction.D);
-        instructionsSecond.add(Instruction.A);
-        instructionsSecond.add(Instruction.D);
-        instructionsSecond.add(Instruction.D);
-        instructionsSecond.add( Instruction.A);
-        return new Mower(positionSecond, Direction.E, instructionsSecond);
+    static Mower mowerSecondBeginPosition() {
+        Position position = new Position(3,3);
+        List<Instruction> instructions = new ArrayList<>();
+        instructions.add(Instruction.A);
+        instructions.add(Instruction.A);
+        instructions.add(Instruction.D);
+        instructions.add(Instruction.A);
+        instructions.add(Instruction.A);
+        instructions.add(Instruction.D);
+        instructions.add(Instruction.A);
+        instructions.add(Instruction.D);
+        instructions.add(Instruction.D);
+        instructions.add( Instruction.A);
+        return new Mower(position, Direction.E, instructions);
     }
 
-    static Dimension getCoordinateMax() {
-        Dimension dimension = new Dimension(5, 5);
-        return dimension;
-    }
-
-    static Lawn getFileData() {
+    public static Lawn lawnFinal() {
         List<Mower> mowers = new ArrayList<Mower>();
-        mowers.add(MowerUtils.getMowerFirst());
-        mowers.add(MowerUtils.getMowerSecond());
-        return new Lawn(MowerUtils.getCoordinateMax(), mowers);
+        mowers.add(LawnUtils.mowerFirstBeginPosition());
+        mowers.add(LawnUtils.mowerSecondBeginPosition());
+        return new Lawn(LawnUtils.dimensionOfLawn(), mowers);
     }
 
 
-    static Mower getMowerFirst1() {
+    static Mower MowerFirstPositionFinal() {
         Position position = new Position(1,3);
         List<Instruction> instructions = new ArrayList<>();
         return new Mower(position, Direction.N, instructions);
     }
 
-    static Mower getMowerSecond2() {
+    static Mower MowerSecondPositionFinal() {
         Position positionSecond = new Position(5,1);
         List<Instruction> instructionsSecond = new ArrayList<>();
         return new Mower(positionSecond, Direction.E, instructionsSecond);
     }
 
 
-    static List<Mower> getMowers() {
+    public static List<Mower> mowersPositionFinal() {
         List<Mower> mowers = new ArrayList<Mower>();
-        mowers.add(MowerUtils.getMowerFirst1());
-        mowers.add(MowerUtils.getMowerSecond2());
+        mowers.add(LawnUtils.MowerFirstPositionFinal());
+        mowers.add(LawnUtils.MowerSecondPositionFinal());
         return mowers;
+    }
+
+    static Dimension dimensionOfLawn() {
+        Dimension dimension = new Dimension(5, 5);
+        return dimension;
     }
 }

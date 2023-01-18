@@ -2,6 +2,7 @@ package file;
 
 import model.Lawn;
 import org.junit.jupiter.api.Test;
+import utils.LawnUtils;
 
 import java.io.IOException;
 import java.util.List;
@@ -13,11 +14,11 @@ class ReadFileTest {
     @Test
     void execute() throws IOException {
         //GIVEN
-        List<String> documentExpected = FileCreateUtils.contentFile();
+        List<String> documentExpected = LawnUtils.contentFileOfLawn();
         ReadFile readFile= new ReadFile();
 
         //WHEN
-        List<String> documentActual = readFile.execute(FileCreateUtils.createFile());
+        List<String> documentActual = readFile.execute(LawnUtils.fileOfLawn());
 
         //THEN
         assertEquals(documentExpected.size(), documentActual.size());
@@ -29,9 +30,9 @@ class ReadFileTest {
     @Test
     void transcription() {
         //GIVEN
-        List<String> document = FileCreateUtils.contentFile();
+        List<String> document = LawnUtils.contentFileOfLawn();
         ReadFile readFile = new ReadFile();
-        Lawn lawnExpected = FileCreateUtils.getFileData();
+        Lawn lawnExpected = LawnUtils.lawnFinal();
 
         //WHEN
         Lawn lawnActual = readFile.transcription(document);

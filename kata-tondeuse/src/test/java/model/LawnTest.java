@@ -1,6 +1,7 @@
 package model;
 
 import org.junit.jupiter.api.Test;
+import utils.LawnUtils;
 
 import java.io.IOException;
 
@@ -11,10 +12,10 @@ class LawnTest {
     @Test
     void execute() throws IOException {
         //GIVEN
-        Lawn lawnExpected = MowerUtils.getFileData();
+        Lawn lawnExpected = LawnUtils.lawnFinal();
 
         //WHEN
-        Lawn lawnActual = Lawn.execute(MowerUtils.createFile());
+        Lawn lawnActual = Lawn.execute(LawnUtils.fileOfLawn());
 
         //THEN
         assertTrue(lawnExpected.getCoordinateMax().equals(lawnActual.getCoordinateMax()));

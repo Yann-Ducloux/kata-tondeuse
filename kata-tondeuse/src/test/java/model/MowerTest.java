@@ -2,6 +2,7 @@ package model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import utils.LawnUtils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -24,10 +25,10 @@ class MowerTest {
     public void lastPosition() throws IOException {
         //GIVEN
         Mower mower = new Mower();
-        List<Mower> mowersExpected = MowerUtils.getMowers();
+        List<Mower> mowersExpected = LawnUtils.mowersPositionFinal();
 
         //WHEN
-        List<Mower> mowersActual= mower.lastPosition(MowerUtils.getFileData());
+        List<Mower> mowersActual= mower.lastPosition(LawnUtils.lawnFinal());
 
         //THEN
         assertEquals(mowersExpected.size(), mowersActual.size());
