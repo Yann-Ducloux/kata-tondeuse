@@ -46,7 +46,7 @@ public class Mower {
     }
 
 
-    public void lastPosition(Lawn lawn) throws IOException {
+    public void lastPosition(Lawn lawn) {
         Dimension dimension = lawn.getCoordinateMax();
         for (Mower mower: lawn.getMowers()) {
             List<Instruction> instructions = mower.getInstructions();
@@ -63,7 +63,7 @@ public class Mower {
                         break;
                 }
             }
-            System.out.println(mower.toString());
+            System.out.println(mower);
         }
     }
 }

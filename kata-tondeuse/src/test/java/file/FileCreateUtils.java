@@ -21,7 +21,7 @@ public class FileCreateUtils {
         document.add("AADAADADDA");
         return document;
     }
-    static File createFile() throws IOException {
+    public static File createFile() throws IOException {
 
         String coordinate = "5 5";
         String direction = "1 2 N";

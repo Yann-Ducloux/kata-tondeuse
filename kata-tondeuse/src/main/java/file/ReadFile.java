@@ -3,9 +3,7 @@ package file;
 import model.*;
 import org.apache.commons.io.FileUtils;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -21,7 +19,7 @@ public class ReadFile {
         return FileUtils.readLines(file, StandardCharsets.UTF_8);
     }
 
-    public Lawn transciption(List<String> contentFile) {
+    public Lawn transcription(List<String> contentFile) {
 
         List<Mower> mowers = new ArrayList<Mower>();
         String[] lineCoordinateMax = contentFile.get(0).split(SPACE);
