@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 /**
  * The type Position.
  *
@@ -22,7 +24,7 @@ public class Position {
         return y;
     }
 
-    public void calculPosition(Direction direction, Dimension dimension) {
+    public void nextPosition(Direction direction, Dimension dimension) {
         switch(direction){
             case N:
                 if(dimension.YInZone(this.y)) {
@@ -46,5 +48,18 @@ public class Position {
                 break;
         }
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Position position = (Position) o;
+        return x == position.x && y == position.y;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
     }
 }

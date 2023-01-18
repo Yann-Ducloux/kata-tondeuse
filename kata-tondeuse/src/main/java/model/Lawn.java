@@ -59,17 +59,4 @@ public class Lawn {
         }
         return new Lawn(dimension, mowers);
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Lawn lawn = (Lawn) o;
-        return Objects.equals(dimension, lawn.dimension) && Objects.equals(mowers, lawn.mowers);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(dimension, mowers);
-    }
 }
