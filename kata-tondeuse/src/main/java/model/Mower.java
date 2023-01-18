@@ -1,6 +1,7 @@
 package model;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -46,8 +47,9 @@ public class Mower {
     }
 
 
-    public void lastPosition(Lawn lawn) {
+    public List<Mower> lastPosition(Lawn lawn) {
         Dimension dimension = lawn.getCoordinateMax();
+        List<Mower> mowers = new ArrayList<>();
         for (Mower mower: lawn.getMowers()) {
             List<Instruction> instructions = mower.getInstructions();
             for (int i = 0; i < instructions.size(); i++) {
@@ -63,7 +65,9 @@ public class Mower {
                         break;
                 }
             }
+            mowers.add(mower);
             System.out.println(mower);
         }
+        return mowers;
     }
 }

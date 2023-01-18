@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,18 +23,17 @@ class MowerTest {
     @Test
     public void lastPosition() throws IOException {
         //GIVEN
-        String pointFinalForFirstMowerExpected = "1 3 N";
-        String pointFinalForSecondMowerExpected = "5 1 E";
-        int numberOfMowerExpected = 2;
         Mower mower = new Mower();
+        List<Mower> mowersExpected = MowerUtils.getMowers();
 
         //WHEN
-        mower.lastPosition(MowerUtils.getFileData());
+        List<Mower> mowersActual= mower.lastPosition(MowerUtils.getFileData());
 
         //THEN
-        String[] lineSystemOutPrintln = outputStreamCaptor.toString().split(LINE_BREAK);
-        assertEquals(numberOfMowerExpected, lineSystemOutPrintln.length);
-        assertEquals(pointFinalForFirstMowerExpected, lineSystemOutPrintln[0]);
-        assertEquals(pointFinalForSecondMowerExpected, lineSystemOutPrintln[1]);
+        assertEquals(mowersExpected.size(), mowersActual.size());
+        for (int i=0; i<mowersExpected.size(); i++) {
+            assertTrue(mowersExpected.get(i).getPosition().equals(mowersActual.get(i).getPosition()));
+            assertTrue(mowersExpected.get(i).getDirection().equals(mowersActual.get(i).getDirection()));
+        }
     }
 }

@@ -78,4 +78,25 @@ public class MowerUtils {
         mowers.add(MowerUtils.getMowerSecond());
         return new Lawn(MowerUtils.getCoordinateMax(), mowers);
     }
+
+
+    static Mower getMowerFirst1() {
+        Position position = new Position(1,3);
+        List<Instruction> instructions = new ArrayList<>();
+        return new Mower(position, Direction.N, instructions);
+    }
+
+    static Mower getMowerSecond2() {
+        Position positionSecond = new Position(5,1);
+        List<Instruction> instructionsSecond = new ArrayList<>();
+        return new Mower(positionSecond, Direction.E, instructionsSecond);
+    }
+
+
+    static List<Mower> getMowers() {
+        List<Mower> mowers = new ArrayList<Mower>();
+        mowers.add(MowerUtils.getMowerFirst1());
+        mowers.add(MowerUtils.getMowerSecond2());
+        return mowers;
+    }
 }
