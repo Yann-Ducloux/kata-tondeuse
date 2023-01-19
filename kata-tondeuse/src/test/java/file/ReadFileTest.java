@@ -9,7 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.is;
+
 
 /**
  * The read file test.
@@ -19,7 +20,7 @@ import static org.hamcrest.Matchers.*;
  */
 class ReadFileTest {
     @Test
-    void transcription() throws IOException{
+    void transcription() throws IOException {
         //GIVEN
         ReadFile readFile = new ReadFile();
 
