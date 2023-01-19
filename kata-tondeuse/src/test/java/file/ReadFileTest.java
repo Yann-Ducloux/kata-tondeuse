@@ -1,56 +1,65 @@
 package file;
 
-import model.Lawn;
+import model.*;
 import org.junit.jupiter.api.Test;
 import utils.LawnUtils;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 
+/**
+ * The read file test.
+ *
+ * @author Yann Ducloux
+ * Défini le test de la classe readFile.
+ */
 class ReadFileTest {
-
     @Test
-    void execute() throws IOException {
+    void transcription() throws IOException{
         //GIVEN
-        List<String> documentExpected = LawnUtils.contentFileOfLawn();
-        ReadFile readFile= new ReadFile();
-
-        //WHEN
-        List<String> documentActual = readFile.execute(LawnUtils.fileOfLawn());
-
-        //THEN
-        assertEquals(documentExpected.size(), documentActual.size());
-        for (int i=0; i<documentExpected.size(); i++) {
-            assertEquals(documentExpected.get(i), documentActual.get(i));
-        }
-    }
-
-    @Test
-    void transcription() {
-        //GIVEN
-        List<String> document = LawnUtils.contentFileOfLawn();
         ReadFile readFile = new ReadFile();
-        Lawn lawnExpected = LawnUtils.lawnFinal();
 
         //WHEN
-        Lawn lawnActual = readFile.transcription(document);
+        Lawn lawnActual = readFile.transcription(LawnUtils.fileOfLawn());
 
         //THEN
-        assertTrue(lawnExpected.getCoordinateMax().equals(lawnActual.getCoordinateMax()));
-        assertEquals(lawnExpected.getMowers().size(), lawnActual.getMowers().size());
-        for(int i = 0; i< lawnExpected.getMowers().size(); i++) {
-            assertTrue(lawnExpected.getMowers().get(i).getDirection().equals(
-                    lawnActual.getMowers().get(i).getDirection()));
-            assertEquals(lawnExpected.getMowers().get(i).getInstructions().size()
-                    , lawnActual.getMowers().get(i).getInstructions().size());
-            for (int j = 0; j < lawnExpected.getMowers().get(i).getInstructions().size(); j++) {
-                assertEquals(lawnExpected.getMowers().get(i).getInstructions().get(j)
-                        , lawnActual.getMowers().get(i).getInstructions().get(j));
-            }
-            assertTrue(lawnExpected.getMowers().get(i).getPosition().equals(
-                    lawnActual.getMowers().get(i).getPosition()));
-        }
+        assertThat(lawnActual, is(lawn(
+                                dimension(5, 5),
+                                mower(position(1, 2), Direction.N, instruction("GAGAGAGAA")),
+                                mower(position(3, 3), Direction.E, instruction("AADAADADDA"))
+        )));
     }
+
+    private List<Instruction> instruction(String instructionsString) {
+        return Instruction.transcription(instructionsString);
+    }
+
+    private Mower mower(Position position, Direction direction, List<Instruction>  instruction) {
+       return  new Mower(position, direction, instruction);
+    }
+
+    private Position position(int x, int y) {
+       return new Position(x, y);
+    }
+
+    private Lawn lawn(Dimension dimension, Mower ... mowers) {
+        List<Mower> mowerList = new ArrayList<>();
+        if(mowers != null) {
+            for (Mower mower: mowers) {
+                mowerList.add(mower);
+            }
+        }
+        Lawn lawn = new Lawn(dimension, mowerList);
+        return lawn;
+    }
+
+    private Dimension dimension(int x, int y) {
+        return new Dimension(x, y);
+    }
+
+
 }

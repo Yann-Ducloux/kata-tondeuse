@@ -10,10 +10,16 @@ import utils.LawnUtils;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+
+/**
+ * The main test.
+ *
+ * @author Yann Ducloux
+ * Défini le test de l'ensemble de l'application.
+ */
 public class mainTest {
 
     private static final String LINE_BREAK = System.getProperty("line.separator");
@@ -29,19 +35,15 @@ public class mainTest {
         //GIVEN
         ReadFile readFile = new ReadFile();
         Mower mower = new Mower();
-        String pointFinalForFirstMowerExpected = "1 3 N";
-        String pointFinalForSecondMowerExpected = "5 1 E";
-        int numberOfMowerExpected = 2;
 
         //WHEN
-        List<String> document = readFile.execute(LawnUtils.fileOfLawn());
-        Lawn lawn = readFile.transcription(document);
+        Lawn lawn = readFile.transcription(LawnUtils.fileOfLawn());
         mower.lastPosition(lawn);
 
         //THEN
         String[] lineSystemOutPrintln = outputStreamCaptor.toString().split(LINE_BREAK);
-        assertEquals(numberOfMowerExpected, lineSystemOutPrintln.length);
-        assertEquals(pointFinalForFirstMowerExpected, lineSystemOutPrintln[0]);
-        assertEquals(pointFinalForSecondMowerExpected, lineSystemOutPrintln[1]);
+        assertEquals(2, lineSystemOutPrintln.length);
+        assertEquals("1 3 N", lineSystemOutPrintln[0]);
+        assertEquals("5 1 E", lineSystemOutPrintln[1]);
     }
 }

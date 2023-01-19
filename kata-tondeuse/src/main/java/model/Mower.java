@@ -1,8 +1,8 @@
 package model;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * The type Mower.
@@ -48,26 +48,25 @@ public class Mower {
 
 
     public List<Mower> lastPosition(Lawn lawn) {
-        Dimension dimension = lawn.getCoordinateMax();
+        Dimension dimension = lawn.getDimension();
         List<Mower> mowers = new ArrayList<>();
         for (Mower mower: lawn.getMowers()) {
-            List<Instruction> instructions = mower.getInstructions();
-            for (int i = 0; i < instructions.size(); i++) {
-                switch (instructions.get(i)) {
-                    case G:
-                        mower.nextDirection(mower.getDirection().turnLeft());
-                        break;
-                    case D:
-                        mower.nextDirection(mower.getDirection().turnRight());
-                        break;
-                    case A:
-                        mower.getPosition().nextPosition(mower.getDirection(), dimension);
-                        break;
-                }
-            }
-            mowers.add(mower);
+            mowers.add(Instruction.executeInstructions(mower, dimension));
             System.out.println(mower);
         }
         return mowers;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Mower mower = (Mower) o;
+        return Objects.equals(position, mower.position) && direction == mower.direction && Objects.equals(instructions, mower.instructions);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(position, direction, instructions);
     }
 }
