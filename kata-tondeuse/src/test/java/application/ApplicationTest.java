@@ -1,4 +1,4 @@
-package main;
+package application;
 
 import file.ReadFile;
 import model.Lawn;
@@ -15,12 +15,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 /**
- * The main test.
+ * The application test.
  *
  * @author Yann Ducloux
  * Défini le test de l'ensemble de l'application.
  */
-public class mainTest {
+public class ApplicationTest {
 
     private static final String LINE_BREAK = System.getProperty("line.separator");
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
@@ -31,7 +31,7 @@ public class mainTest {
     }
 
     @Test
-    void mainTest() throws IOException {
+    void transcriptionAndLastPositionTest() throws IOException {
         //GIVEN
         ReadFile readFile = new ReadFile();
         Mower mower = new Mower();

@@ -192,7 +192,19 @@ class MowerTest {
                 mower(position(1, 5), Direction.N, instruction("A")))));
     }
 
+    @Test
+    public void lastPositionNextPositionNorthInBorderExecuteNextCommand() {
+        //GIVEN
+        Mower mower = new Mower();
 
+        //WHEN
+        List<Mower> mowersActual = mower.lastPosition(lawn(dimension(5,5),
+                mowers(
+                        mower(position(1, 5), Direction.N, instruction("AGA")))));
+        //THEN
+        assertThat(mowersActual, is(mowers(
+                mower(position(0, 5), Direction.W, instruction("AGA")))));
+    }
 
     @Test
     public void lastPositionNextPositionSouth() {
@@ -222,6 +234,21 @@ class MowerTest {
         assertThat(mowersActual, is(mowers(
                 mower(position(1, 0), Direction.S, instruction("A")))));
     }
+
+    @Test
+    public void lastPositionNextPositionSouthInBorderExecuteNextCommand() {
+        //GIVEN
+        Mower mower = new Mower();
+
+        //WHEN
+        List<Mower> mowersActual = mower.lastPosition(lawn(dimension(5,5),
+                mowers(
+                        mower(position(1, 0), Direction.S, instruction("ADA")))));
+        //THEN
+        assertThat(mowersActual, is(mowers(
+                mower(position(0, 0), Direction.W, instruction("ADA")))));
+    }
+
     @Test
     public void lastPositionNextPositionEast() {
         //GIVEN
@@ -251,6 +278,19 @@ class MowerTest {
                 mower(position(5, 3), Direction.E, instruction("A")))));
     }
 
+    @Test
+    public void lastPositionNextPositionEastInBorderExecuteNextCommand() {
+        //GIVEN
+        Mower mower = new Mower();
+
+        //WHEN
+        List<Mower> mowersActual = mower.lastPosition(lawn(dimension(5,5),
+                mowers(
+                        mower(position(5, 3), Direction.E, instruction("AGA")))));
+        //THEN
+        assertThat(mowersActual, is(mowers(
+                mower(position(5, 4), Direction.N, instruction("AGA")))));
+    }
 
     @Test
     public void lastPositionNextPositionWest() {
@@ -266,6 +306,20 @@ class MowerTest {
                 mower(position(2, 3), Direction.W, instruction("A")))));
     }
 
+
+    @Test
+    public void lastPositionNextPositionWestInBorderExecuteNextCommand() {
+        //GIVEN
+        Mower mower = new Mower();
+
+        //WHEN
+        List<Mower> mowersActual = mower.lastPosition(lawn(dimension(5,5),
+                mowers(
+                        mower(position(0, 3), Direction.W, instruction("ADA")))));
+        //THEN
+        assertThat(mowersActual, is(mowers(
+                mower(position(0, 4), Direction.N, instruction("ADA")))));
+    }
 
     @Test
     public void lastPositionNextPositionWestInBorder() {
