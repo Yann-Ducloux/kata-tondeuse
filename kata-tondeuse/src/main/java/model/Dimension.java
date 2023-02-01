@@ -3,7 +3,7 @@ package model;
 import java.util.Objects;
 
 /**
- * The type Coordinate max.
+ * The Dimension.
  *
  * @author Yann Ducloux
  * Défini la dimension de la pelouse.
