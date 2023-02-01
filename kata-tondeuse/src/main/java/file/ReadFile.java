@@ -21,7 +21,7 @@ public class ReadFile {
 
     public Lawn transcription(File file) throws IOException {
         List<String> contentFile = FileUtils.readLines(file, StandardCharsets.UTF_8);
-        List<Mower> mowers = new ArrayList<Mower>();
+        List<Mower> mowers = new ArrayList<>();
         String[] lineCoordinateMax = contentFile.get(0).split(SPACE);
         Dimension dimension = new Dimension(Integer.parseInt(lineCoordinateMax[0]), Integer.parseInt(lineCoordinateMax[1]));
         for (int i=1;i<contentFile.size();i=i+2) {

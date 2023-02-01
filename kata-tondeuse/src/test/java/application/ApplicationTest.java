@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author Yann Ducloux
  * Défini le test de l'ensemble de l'application.
  */
-public class ApplicationTest {
+class ApplicationTest {
 
     private static final String LINE_BREAK = System.getProperty("line.separator");
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();

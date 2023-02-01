@@ -31,7 +31,7 @@ public enum Instruction {
     private static final String EMPTY_FIELD = "";
     public static List<Instruction> transcription(String instructionString) {
         return Stream.of(instructionString.split(EMPTY_FIELD))
-                .map (elem ->  Instruction.valueOf(elem))
+                .map (Instruction::valueOf)
                 .collect(Collectors.toList());
     }
 

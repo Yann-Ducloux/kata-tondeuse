@@ -16,10 +16,10 @@ public class Dimension {
         this.x = x;
         this.y = y;
     }
-    public boolean YInZone(int y) {
+    public boolean yInZone(int y) {
         return y < this.y;
     }
-    public boolean XInZone(int x) {
+    public boolean xInZone(int x) {
         return x < this.x;
     }
     @Override

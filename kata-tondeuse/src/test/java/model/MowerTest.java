@@ -25,7 +25,7 @@ class MowerTest {
     }
 
     @Test
-    public void lastPosition() {
+    void lastPosition() {
         //GIVEN
         Mower mower = new Mower();
 
@@ -44,7 +44,7 @@ class MowerTest {
 
 
     @Test
-    public void lastPositionTurnLeft1Time() {
+    void lastPositionTurnLeft1Time() {
         //GIVEN
         Mower mower = new Mower();
 
@@ -59,7 +59,7 @@ class MowerTest {
 
 
     @Test
-    public void lastPositionTurnLeft2Time() {
+    void lastPositionTurnLeft2Time() {
         //GIVEN
         Mower mower = new Mower();
 
@@ -74,7 +74,7 @@ class MowerTest {
 
 
     @Test
-    public void lastPositionTurnLeft3Time() {
+    void lastPositionTurnLeft3Time() {
         //GIVEN
         Mower mower = new Mower();
 
@@ -89,7 +89,7 @@ class MowerTest {
 
 
     @Test
-    public void lastPositionTurnLeft4Time() {
+    void lastPositionTurnLeft4Time() {
         //GIVEN
         Mower mower = new Mower();
 
@@ -104,7 +104,7 @@ class MowerTest {
 
 
     @Test
-    public void lastPositionTurnRight1Time() {
+    void lastPositionTurnRight1Time() {
         //GIVEN
         Mower mower = new Mower();
 
@@ -119,7 +119,7 @@ class MowerTest {
 
 
     @Test
-    public void lastPositionTurnRight2Time() {
+    void lastPositionTurnRight2Time() {
         //GIVEN
         Mower mower = new Mower();
 
@@ -134,7 +134,7 @@ class MowerTest {
 
 
     @Test
-    public void lastPositionTurnRight3Time() {
+    void lastPositionTurnRight3Time() {
         //GIVEN
         Mower mower = new Mower();
 
@@ -149,7 +149,7 @@ class MowerTest {
 
 
     @Test
-    public void lastPositionTurnRight4Time() {
+    void lastPositionTurnRight4Time() {
         //GIVEN
         Mower mower = new Mower();
 
@@ -164,7 +164,7 @@ class MowerTest {
 
 
     @Test
-    public void lastPositionNextPositionNorth() {
+    void lastPositionNextPositionNorth() {
         //GIVEN
         Mower mower = new Mower();
 
@@ -179,7 +179,7 @@ class MowerTest {
 
 
     @Test
-    public void lastPositionNextPositionNorthInBorder() {
+    void lastPositionNextPositionNorthInBorder() {
         //GIVEN
         Mower mower = new Mower();
 
@@ -193,7 +193,7 @@ class MowerTest {
     }
 
     @Test
-    public void lastPositionNextPositionNorthInBorderExecuteNextCommand() {
+    void lastPositionNextPositionNorthInBorderExecuteNextCommand() {
         //GIVEN
         Mower mower = new Mower();
 
@@ -207,7 +207,7 @@ class MowerTest {
     }
 
     @Test
-    public void lastPositionNextPositionSouth() {
+    void lastPositionNextPositionSouth() {
         //GIVEN
         Mower mower = new Mower();
 
@@ -222,7 +222,7 @@ class MowerTest {
 
 
     @Test
-    public void lastPositionNextPositionSouthInBorder() {
+    void lastPositionNextPositionSouthInBorder() {
         //GIVEN
         Mower mower = new Mower();
 
@@ -236,7 +236,7 @@ class MowerTest {
     }
 
     @Test
-    public void lastPositionNextPositionSouthInBorderExecuteNextCommand() {
+    void lastPositionNextPositionSouthInBorderExecuteNextCommand() {
         //GIVEN
         Mower mower = new Mower();
 
@@ -250,7 +250,7 @@ class MowerTest {
     }
 
     @Test
-    public void lastPositionNextPositionEast() {
+    void lastPositionNextPositionEast() {
         //GIVEN
         Mower mower = new Mower();
 
@@ -265,7 +265,7 @@ class MowerTest {
 
 
     @Test
-    public void lastPositionNextPositionEastInBorder() {
+    void lastPositionNextPositionEastInBorder() {
         //GIVEN
         Mower mower = new Mower();
 
@@ -279,7 +279,7 @@ class MowerTest {
     }
 
     @Test
-    public void lastPositionNextPositionEastInBorderExecuteNextCommand() {
+    void lastPositionNextPositionEastInBorderExecuteNextCommand() {
         //GIVEN
         Mower mower = new Mower();
 
@@ -293,7 +293,7 @@ class MowerTest {
     }
 
     @Test
-    public void lastPositionNextPositionWest() {
+    void lastPositionNextPositionWest() {
         //GIVEN
         Mower mower = new Mower();
 
@@ -308,7 +308,7 @@ class MowerTest {
 
 
     @Test
-    public void lastPositionNextPositionWestInBorderExecuteNextCommand() {
+    void lastPositionNextPositionWestInBorderExecuteNextCommand() {
         //GIVEN
         Mower mower = new Mower();
 
@@ -322,7 +322,7 @@ class MowerTest {
     }
 
     @Test
-    public void lastPositionNextPositionWestInBorder() {
+    void lastPositionNextPositionWestInBorder() {
         //GIVEN
         Mower mower = new Mower();
 

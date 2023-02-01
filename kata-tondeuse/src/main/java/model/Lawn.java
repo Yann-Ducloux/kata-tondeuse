@@ -10,8 +10,6 @@ import java.util.Objects;
  * Défini les données du fichier.
  */
 public class Lawn {
-    private static final String SPACE = " ";
-    private static final String EMPTY_FIELD = "";
     Dimension dimension;
     List<Mower> mowers;
 

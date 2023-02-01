@@ -27,7 +27,7 @@ public class Position {
     public void nextPosition(Direction direction, Dimension dimension) {
         switch(direction){
             case N:
-                if(dimension.YInZone(this.y)) {
+                if(dimension.yInZone(this.y)) {
                     this.y++;
                 }
                 break;
@@ -37,7 +37,7 @@ public class Position {
                 }
                 break;
             case E:
-                if(dimension.XInZone(this.x)) {
+                if(dimension.xInZone(this.x)) {
                     this.x++;
                 }
                 break;
