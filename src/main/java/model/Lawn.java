@@ -10,8 +10,8 @@ import java.util.Objects;
  * Défini les données du fichier.
  */
 public class Lawn {
-    Dimension dimension;
-    List<Mower> mowers;
+    private Dimension dimension;
+    private List<Mower> mowers;
 
     public Lawn(Dimension dimension, List<Mower> mowers) {
         this.dimension = dimension;

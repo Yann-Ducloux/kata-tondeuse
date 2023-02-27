@@ -10,9 +10,9 @@ import java.util.Objects;
  * @author Yann Ducloux Défini la tondeuse.
  */
 public class Mower {
-    Position position;
-    Direction direction;
-    List<Instruction> instructions;
+    private Position position;
+    private Direction direction;
+    private List<Instruction> instructions;
 
     public Mower(Position position, Direction direction, List<Instruction> instructions) {
         this.position = position;

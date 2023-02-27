@@ -9,8 +9,8 @@ import java.util.Objects;
  * Défini la dimension de la pelouse.
  */
 public class Dimension {
-    int x;
-    int y;
+    private int x;
+    private int y;
 
     public Dimension(int x, int y) {
         this.x = x;
