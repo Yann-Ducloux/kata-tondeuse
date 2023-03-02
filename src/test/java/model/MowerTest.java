@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -346,9 +347,7 @@ class MowerTest {
     private List<Mower> mowers(Mower... mowers) {
         List<Mower> mowerList = new ArrayList<>();
         if(mowers != null) {
-            for (Mower mower: mowers) {
-                mowerList.add(mower);
-            }
+            mowerList.addAll(Arrays.asList(mowers));
         }
         return mowerList;
     }
