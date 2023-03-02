@@ -11,43 +11,38 @@ import java.util.stream.Stream;
  * Défini l'instructrion.
  */
 public enum Instruction {
+    GAUCHE("G"),
+    DROITE("D"),
+    AVANCER("A");
+    String instructionString;
 
-    /**
-     * Gauche.
-     */
-    G,
-    /**
-     * Droite.
-     */
-    D,
-    /**
-     * Avancer.
-     */
-    A;
-
-    Instruction() {
+    Instruction(String instructionString) {
+        this.instructionString = instructionString;
     }
 
     private static final String EMPTY_FIELD = "";
     public static List<Instruction> transcription(String instructionString) {
         return Stream.of(instructionString.split(EMPTY_FIELD))
-                .map (Instruction::valueOf)
+                .map (Instruction::convertToInstruction)
                 .collect(Collectors.toList());
+    }
+
+    private static Instruction convertToInstruction(String instructionString) {
+        for (Instruction instruction : Instruction.values()) {
+            if (instruction.instructionString.equalsIgnoreCase(instructionString)) {
+                return instruction;
+            }
+        }
+        return null;
     }
 
     public static Mower executeInstructions(Mower mower, Dimension dimension) {
         List<Instruction> instructions = mower.getInstructions();
         for (int i = 0; i < instructions.size(); i++) {
             switch (instructions.get(i)) {
-                case G:
-                    mower.nextDirection(mower.getDirection().turnLeft());
-                    break;
-                case D:
-                    mower.nextDirection(mower.getDirection().turnRight());
-                    break;
-                case A:
-                    mower.getPosition().nextPosition(mower.getDirection(), dimension);
-                    break;
+                case GAUCHE ->  mower.nextDirection(mower.getDirection().turnLeft());
+                case DROITE ->  mower.nextDirection(mower.getDirection().turnRight());
+                case AVANCER -> mower.getPosition().nextPosition(mower.getDirection(), dimension);
             }
         }
         return mower;

@@ -8,14 +8,11 @@ import java.util.Objects;
  * @author Yann Ducloux
  * Défini la dimension de la pelouse.
  */
-public class Dimension {
-    private int x;
-    private int y;
-
+public class Dimension extends Coordinate{
     public Dimension(int x, int y) {
-        this.x = x;
-        this.y = y;
+        super(x, y);
     }
+
     public boolean yInZone(int y) {
         return y < this.y;
     }

@@ -8,47 +8,46 @@ import java.util.Objects;
  * @author Yann Ducloux
  * Défini la Position.
  */
-public class Position {
-    private int x;
-    private int y;
+public class Position extends Coordinate{
 
     public Position(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
-
-    public int getX() {
-        return x;
-    }
-    public int getY() {
-        return y;
+        super(x, y);
     }
 
     public void nextPosition(Direction direction, Dimension dimension) {
         switch(direction){
-            case N:
-                if(dimension.yInZone(this.y)) {
-                    this.y++;
-                }
-                break;
-            case S:
-                if(this.y > 0) {
-                    this.y--;
-                }
-                break;
-            case E:
-                if(dimension.xInZone(this.x)) {
-                    this.x++;
-                }
-                break;
-            case W:
-                if(this.x > 0) {
-                    this.x--;
-                }
-                break;
+            case N -> yIncrease(dimension);
+            case S -> yDecrease();
+            case E -> xIncrease(dimension);
+            case W -> xDecrease();
         }
 
     }
+
+    private void xDecrease() {
+        if(this.x > 0) {
+            this.x--;
+        }
+    }
+
+    private void xIncrease(Dimension dimension) {
+        if(dimension.xInZone(this.x)) {
+                this.x++;
+            }
+    }
+
+    private void yDecrease() {
+        if(this.y > 0) {
+                this.y--;
+            }
+    }
+
+    private void yIncrease(Dimension dimension) {
+        if(dimension.yInZone(this.y)) {
+            this.y++;
+        }
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -61,5 +60,10 @@ public class Position {
     @Override
     public int hashCode() {
         return Objects.hash(x, y);
+    }
+
+    @Override
+    public String toString() {
+        return x +" " + y;
     }
 }

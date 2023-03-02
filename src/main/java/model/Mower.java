@@ -43,7 +43,7 @@ public class Mower {
 
     @Override
     public String toString() {
-        return position.getX() + " " + position.getY() + " " + direction;
+        return position.toString() + " " + direction;
     }
 
 
