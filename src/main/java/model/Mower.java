@@ -32,12 +32,20 @@ public class Mower {
         return instructions;
     }
 
-    public Position getPosition() {
-        return position;
+    public void nextPosition(Direction direction, Dimension dimension) {
+        position.nextPosition(direction, dimension);
     }
 
     public Direction getDirection() {
         return direction;
+    }
+
+    public Direction turnLeft() {
+        return direction.turnLeft();
+    }
+
+    public Direction turnRight() {
+        return direction.turnRight();
     }
 
 
@@ -69,4 +77,5 @@ public class Mower {
     public int hashCode() {
         return Objects.hash(position, direction, instructions);
     }
+
 }

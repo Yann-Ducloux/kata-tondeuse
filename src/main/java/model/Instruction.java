@@ -40,9 +40,9 @@ public enum Instruction {
         List<Instruction> instructions = mower.getInstructions();
         for (int i = 0; i < instructions.size(); i++) {
             switch (instructions.get(i)) {
-                case GAUCHE ->  mower.nextDirection(mower.getDirection().turnLeft());
-                case DROITE ->  mower.nextDirection(mower.getDirection().turnRight());
-                case AVANCER -> mower.getPosition().nextPosition(mower.getDirection(), dimension);
+                case GAUCHE ->  mower.nextDirection(mower.turnLeft());
+                case DROITE ->  mower.nextDirection(mower.turnRight());
+                case AVANCER -> mower.nextPosition(mower.getDirection(), dimension);
             }
         }
         return mower;
