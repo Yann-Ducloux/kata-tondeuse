@@ -51,7 +51,7 @@ public class Mower {
 
     @Override
     public String toString() {
-        return position.toString() + " " + direction;
+        return position.toString() + " " + direction.toString();
     }
 
 

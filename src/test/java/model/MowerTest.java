@@ -33,14 +33,14 @@ class MowerTest {
         //WHEN
         List<Mower> mowersActual = mower.lastPosition(lawn(dimension(5,5),
                 mowers(
-                        mower(position(1, 2), Direction.N, instruction("GAGAGAGAA")),
-                        mower(position(3, 3), Direction.E, instruction("AADAADADDA"))
+                        mower(position(1, 2), Direction.NORTH, instruction("GAGAGAGAA")),
+                        mower(position(3, 3), Direction.EAST, instruction("AADAADADDA"))
                         )));
 
         //THEN
         assertThat(mowersActual, is(mowers(
-                                        mower(position(1, 3), Direction.N, instruction("GAGAGAGAA")),
-                                        mower(position(5,1), Direction.E, instruction("AADAADADDA")))));
+                                        mower(position(1, 3), Direction.NORTH, instruction("GAGAGAGAA")),
+                                        mower(position(5,1), Direction.EAST, instruction("AADAADADDA")))));
     }
 
 
@@ -52,10 +52,10 @@ class MowerTest {
         //WHEN
         List<Mower> mowersActual = mower.lastPosition(lawn(dimension(5,5),
                 mowers(
-                        mower(position(1, 3), Direction.N, instruction("G")))));
+                        mower(position(1, 3), Direction.NORTH, instruction("G")))));
         //THEN
         assertThat(mowersActual, is(mowers(
-                mower(position(1, 3), Direction.W, instruction("G")))));
+                mower(position(1, 3), Direction.WEST, instruction("G")))));
     }
 
 
@@ -67,10 +67,10 @@ class MowerTest {
         //WHEN
         List<Mower> mowersActual = mower.lastPosition(lawn(dimension(5,5),
                 mowers(
-                        mower(position(1, 3), Direction.N, instruction("GG")))));
+                        mower(position(1, 3), Direction.NORTH, instruction("GG")))));
         //THEN
         assertThat(mowersActual, is(mowers(
-                mower(position(1, 3), Direction.S, instruction("GG")))));
+                mower(position(1, 3), Direction.SOUTH, instruction("GG")))));
     }
 
 
@@ -82,10 +82,10 @@ class MowerTest {
         //WHEN
         List<Mower> mowersActual = mower.lastPosition(lawn(dimension(5,5),
                 mowers(
-                        mower(position(1, 3), Direction.N, instruction("GGG")))));
+                        mower(position(1, 3), Direction.NORTH, instruction("GGG")))));
         //THEN
         assertThat(mowersActual, is(mowers(
-                mower(position(1, 3), Direction.E, instruction("GGG")))));
+                mower(position(1, 3), Direction.EAST, instruction("GGG")))));
     }
 
 
@@ -97,10 +97,10 @@ class MowerTest {
         //WHEN
         List<Mower> mowersActual = mower.lastPosition(lawn(dimension(5,5),
                 mowers(
-                        mower(position(1, 3), Direction.N, instruction("GGGG")))));
+                        mower(position(1, 3), Direction.NORTH, instruction("GGGG")))));
         //THEN
         assertThat(mowersActual, is(mowers(
-                mower(position(1, 3), Direction.N, instruction("GGGG")))));
+                mower(position(1, 3), Direction.NORTH, instruction("GGGG")))));
     }
 
 
@@ -112,10 +112,10 @@ class MowerTest {
         //WHEN
         List<Mower> mowersActual = mower.lastPosition(lawn(dimension(5,5),
                 mowers(
-                        mower(position(1, 3), Direction.N, instruction("D")))));
+                        mower(position(1, 3), Direction.NORTH, instruction("D")))));
         //THEN
         assertThat(mowersActual, is(mowers(
-                mower(position(1, 3), Direction.E, instruction("D")))));
+                mower(position(1, 3), Direction.EAST, instruction("D")))));
     }
 
 
@@ -127,10 +127,10 @@ class MowerTest {
         //WHEN
         List<Mower> mowersActual = mower.lastPosition(lawn(dimension(5,5),
                 mowers(
-                        mower(position(1, 3), Direction.N, instruction("DD")))));
+                        mower(position(1, 3), Direction.NORTH, instruction("DD")))));
         //THEN
         assertThat(mowersActual, is(mowers(
-                mower(position(1, 3), Direction.S, instruction("DD")))));
+                mower(position(1, 3), Direction.SOUTH, instruction("DD")))));
     }
 
 
@@ -142,10 +142,10 @@ class MowerTest {
         //WHEN
         List<Mower> mowersActual = mower.lastPosition(lawn(dimension(5,5),
                 mowers(
-                        mower(position(1, 3), Direction.N, instruction("DDD")))));
+                        mower(position(1, 3), Direction.NORTH, instruction("DDD")))));
         //THEN
         assertThat(mowersActual, is(mowers(
-                mower(position(1, 3), Direction.W, instruction("DDD")))));
+                mower(position(1, 3), Direction.WEST, instruction("DDD")))));
     }
 
 
@@ -157,10 +157,10 @@ class MowerTest {
         //WHEN
         List<Mower> mowersActual = mower.lastPosition(lawn(dimension(5,5),
                 mowers(
-                        mower(position(1, 3), Direction.N, instruction("DDDD")))));
+                        mower(position(1, 3), Direction.NORTH, instruction("DDDD")))));
         //THEN
         assertThat(mowersActual, is(mowers(
-                mower(position(1, 3), Direction.N, instruction("DDDD")))));
+                mower(position(1, 3), Direction.NORTH, instruction("DDDD")))));
     }
 
 
@@ -172,10 +172,10 @@ class MowerTest {
         //WHEN
         List<Mower> mowersActual = mower.lastPosition(lawn(dimension(5,5),
                 mowers(
-                        mower(position(1, 3), Direction.N, instruction("A")))));
+                        mower(position(1, 3), Direction.NORTH, instruction("A")))));
         //THEN
         assertThat(mowersActual, is(mowers(
-                mower(position(1, 4), Direction.N, instruction("A")))));
+                mower(position(1, 4), Direction.NORTH, instruction("A")))));
     }
 
 
@@ -187,10 +187,10 @@ class MowerTest {
         //WHEN
         List<Mower> mowersActual = mower.lastPosition(lawn(dimension(5,5),
                 mowers(
-                        mower(position(1, 5), Direction.N, instruction("A")))));
+                        mower(position(1, 5), Direction.NORTH, instruction("A")))));
         //THEN
         assertThat(mowersActual, is(mowers(
-                mower(position(1, 5), Direction.N, instruction("A")))));
+                mower(position(1, 5), Direction.NORTH, instruction("A")))));
     }
 
     @Test
@@ -201,10 +201,10 @@ class MowerTest {
         //WHEN
         List<Mower> mowersActual = mower.lastPosition(lawn(dimension(5,5),
                 mowers(
-                        mower(position(1, 5), Direction.N, instruction("AGA")))));
+                        mower(position(1, 5), Direction.NORTH, instruction("AGA")))));
         //THEN
         assertThat(mowersActual, is(mowers(
-                mower(position(0, 5), Direction.W, instruction("AGA")))));
+                mower(position(0, 5), Direction.WEST, instruction("AGA")))));
     }
 
     @Test
@@ -215,10 +215,10 @@ class MowerTest {
         //WHEN
         List<Mower> mowersActual = mower.lastPosition(lawn(dimension(5,5),
                 mowers(
-                        mower(position(1, 3), Direction.S, instruction("A")))));
+                        mower(position(1, 3), Direction.SOUTH, instruction("A")))));
         //THEN
         assertThat(mowersActual, is(mowers(
-                mower(position(1, 2), Direction.S, instruction("A")))));
+                mower(position(1, 2), Direction.SOUTH, instruction("A")))));
     }
 
 
@@ -230,10 +230,10 @@ class MowerTest {
         //WHEN
         List<Mower> mowersActual = mower.lastPosition(lawn(dimension(5,5),
                 mowers(
-                        mower(position(1, 0), Direction.S, instruction("A")))));
+                        mower(position(1, 0), Direction.SOUTH, instruction("A")))));
         //THEN
         assertThat(mowersActual, is(mowers(
-                mower(position(1, 0), Direction.S, instruction("A")))));
+                mower(position(1, 0), Direction.SOUTH, instruction("A")))));
     }
 
     @Test
@@ -244,10 +244,10 @@ class MowerTest {
         //WHEN
         List<Mower> mowersActual = mower.lastPosition(lawn(dimension(5,5),
                 mowers(
-                        mower(position(1, 0), Direction.S, instruction("ADA")))));
+                        mower(position(1, 0), Direction.SOUTH, instruction("ADA")))));
         //THEN
         assertThat(mowersActual, is(mowers(
-                mower(position(0, 0), Direction.W, instruction("ADA")))));
+                mower(position(0, 0), Direction.WEST, instruction("ADA")))));
     }
 
     @Test
@@ -258,10 +258,10 @@ class MowerTest {
         //WHEN
         List<Mower> mowersActual = mower.lastPosition(lawn(dimension(5,5),
                 mowers(
-                        mower(position(1, 3), Direction.E, instruction("A")))));
+                        mower(position(1, 3), Direction.EAST, instruction("A")))));
         //THEN
         assertThat(mowersActual, is(mowers(
-                mower(position(2, 3), Direction.E, instruction("A")))));
+                mower(position(2, 3), Direction.EAST, instruction("A")))));
     }
 
 
@@ -273,10 +273,10 @@ class MowerTest {
         //WHEN
         List<Mower> mowersActual = mower.lastPosition(lawn(dimension(5,5),
                 mowers(
-                        mower(position(5, 3), Direction.E, instruction("A")))));
+                        mower(position(5, 3), Direction.EAST, instruction("A")))));
         //THEN
         assertThat(mowersActual, is(mowers(
-                mower(position(5, 3), Direction.E, instruction("A")))));
+                mower(position(5, 3), Direction.EAST, instruction("A")))));
     }
 
     @Test
@@ -287,10 +287,10 @@ class MowerTest {
         //WHEN
         List<Mower> mowersActual = mower.lastPosition(lawn(dimension(5,5),
                 mowers(
-                        mower(position(5, 3), Direction.E, instruction("AGA")))));
+                        mower(position(5, 3), Direction.EAST, instruction("AGA")))));
         //THEN
         assertThat(mowersActual, is(mowers(
-                mower(position(5, 4), Direction.N, instruction("AGA")))));
+                mower(position(5, 4), Direction.NORTH, instruction("AGA")))));
     }
 
     @Test
@@ -301,10 +301,10 @@ class MowerTest {
         //WHEN
         List<Mower> mowersActual = mower.lastPosition(lawn(dimension(5,5),
                 mowers(
-                        mower(position(3, 3), Direction.W, instruction("A")))));
+                        mower(position(3, 3), Direction.WEST, instruction("A")))));
         //THEN
         assertThat(mowersActual, is(mowers(
-                mower(position(2, 3), Direction.W, instruction("A")))));
+                mower(position(2, 3), Direction.WEST, instruction("A")))));
     }
 
 
@@ -316,10 +316,10 @@ class MowerTest {
         //WHEN
         List<Mower> mowersActual = mower.lastPosition(lawn(dimension(5,5),
                 mowers(
-                        mower(position(0, 3), Direction.W, instruction("ADA")))));
+                        mower(position(0, 3), Direction.WEST, instruction("ADA")))));
         //THEN
         assertThat(mowersActual, is(mowers(
-                mower(position(0, 4), Direction.N, instruction("ADA")))));
+                mower(position(0, 4), Direction.NORTH, instruction("ADA")))));
     }
 
     @Test
@@ -330,10 +330,10 @@ class MowerTest {
         //WHEN
         List<Mower> mowersActual = mower.lastPosition(lawn(dimension(5,5),
                 mowers(
-                        mower(position(0, 3), Direction.W, instruction("A")))));
+                        mower(position(0, 3), Direction.WEST, instruction("A")))));
         //THEN
         assertThat(mowersActual, is(mowers(
-                mower(position(0, 3), Direction.W, instruction("A")))));
+                mower(position(0, 3), Direction.WEST, instruction("A")))));
     }
     private Lawn lawn(Dimension dimension, List<Mower> mowers) {
         return new Lawn(dimension, mowers);

@@ -8,55 +8,59 @@ package model;
  */
 public enum Direction {
 
-    /**
-     * le nord.
-     */
-    N() {
+    NORTH("N") {
         public Direction turnLeft() {
-            return Direction.W;
+            return Direction.WEST;
         }
         public Direction turnRight() {
-            return Direction.E;
+            return Direction.EAST;
         }
     },
 
-    /**
-     * l'ouest.
-     */
-    W() {
+    WEST("W") {
         public Direction turnLeft() {
-            return Direction.S;
+            return Direction.SOUTH;
         }
         public Direction turnRight() {
-            return Direction.N;
+            return Direction.NORTH;
         }
     },
 
-    /**
-     * le sud.
-     */
-    S() {
+    SOUTH("S") {
         public Direction turnLeft() {
-            return Direction.E;
+            return Direction.EAST;
         }
         public Direction turnRight() {
-            return Direction.W;
+            return Direction.WEST;
         }
     },
 
-    /**
-     * l'est.
-     */
-    E() {
+    EAST("E") {
         public Direction turnLeft() {
-            return Direction.N;
+            return Direction.NORTH;
         }
         public Direction turnRight() {
-            return Direction.S;
+            return Direction.SOUTH;
         }
     };
-    Direction() {
+    private String code;
+    Direction(String code) {
+        this.code = code;
 
+    }
+
+    @Override
+    public String toString() {
+        return this.code;
+    }
+
+    public static Direction convertToCommand(String instruction) {
+        for (Direction direction : Direction.values()) {
+            if (direction.toString().equalsIgnoreCase(instruction)) {
+                return direction;
+            }
+        }
+        return null;
     }
     public abstract Direction turnLeft();
     public abstract Direction turnRight();

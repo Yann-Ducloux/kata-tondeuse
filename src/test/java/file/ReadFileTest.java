@@ -30,8 +30,8 @@ class ReadFileTest {
         //THEN
         assertThat(lawnActual, is(lawn(
                                 dimension(5, 5),
-                                mower(position(1, 2), Direction.N, instruction("GAGAGAGAA")),
-                                mower(position(3, 3), Direction.E, instruction("AADAADADDA"))
+                                mower(position(1, 2), Direction.NORTH, instruction("GAGAGAGAA")),
+                                mower(position(3, 3), Direction.EAST, instruction("AADAADADDA"))
         )));
     }
 

@@ -16,10 +16,10 @@ public class Position extends Coordinate{
 
     public void nextPosition(Direction direction, Dimension dimension) {
         switch(direction){
-            case N -> yIncrease(dimension);
-            case S -> yDecrease();
-            case E -> xIncrease(dimension);
-            case W -> xDecrease();
+            case NORTH -> yIncrease(dimension);
+            case SOUTH -> yDecrease();
+            case EAST -> xIncrease(dimension);
+            case WEST -> xDecrease();
         }
 
     }

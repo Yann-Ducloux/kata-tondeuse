@@ -14,10 +14,10 @@ public enum Instruction {
     GAUCHE("G"),
     DROITE("D"),
     AVANCER("A");
-    String instructionString;
+    private String code;
 
-    Instruction(String instructionString) {
-        this.instructionString = instructionString;
+    Instruction(String code) {
+        this.code = code;
     }
 
     private static final String EMPTY_FIELD = "";
@@ -29,7 +29,7 @@ public enum Instruction {
 
     private static Instruction convertToInstruction(String instructionString) {
         for (Instruction instruction : Instruction.values()) {
-            if (instruction.instructionString.equalsIgnoreCase(instructionString)) {
+            if (instruction.code.equalsIgnoreCase(instructionString)) {
                 return instruction;
             }
         }

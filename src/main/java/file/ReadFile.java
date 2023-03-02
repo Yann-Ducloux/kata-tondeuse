@@ -28,7 +28,7 @@ public class ReadFile {
             String localisationMower = contentFile.get(i);
             String[] splitLocalisationMower = localisationMower.split(SPACE);
             Position position = new Position(Integer.parseInt(splitLocalisationMower[0]), Integer.parseInt(splitLocalisationMower[1]));
-            Direction direction = Direction.valueOf(splitLocalisationMower[2]);
+            Direction direction = Direction.convertToCommand(splitLocalisationMower[2]);
             List<Instruction> instructions = Instruction.transcription(contentFile.get(i+1));
             mowers.add(new Mower(position, direction, instructions));
         }
