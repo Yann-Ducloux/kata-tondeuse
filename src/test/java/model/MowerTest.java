@@ -1,4 +1,7 @@
 package model;
+import exception.InstructionEmptyException;
+import exception.InstructionNullException;
+import exception.LetterUnknownException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -10,6 +13,8 @@ import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * The mower test.
@@ -335,6 +340,62 @@ class MowerTest {
         assertThat(mowersActual, is(mowers(
                 mower(position(0, 3), Direction.WEST, instruction("A")))));
     }
+
+    @Test
+    void instructionWithLetterUnknown(){
+        //GIVEN
+        Mower mower = new Mower();
+
+        //WHEN
+        LetterUnknownException exception = assertThrows(LetterUnknownException.class, () -> {
+            mower.lastPosition(lawn(dimension(5,5),
+                mowers(
+                        mower(position(0, 3), Direction.NORTH, instruction("AEFGSDFG")))));
+
+        });
+
+        //THEN
+        assertTrue(exception.getMessage()
+                .contains(messageError("The instructions have a letter unknown")));
+    }
+
+    @Test
+    void instructionNull(){
+        //GIVEN
+        Mower mower = new Mower();
+        //WHEN
+        InstructionNullException exception = assertThrows(InstructionNullException.class, () -> {
+            mower.lastPosition(lawn(dimension(5,5),
+                    mowers(
+                            mower(position(0, 3), Direction.NORTH, instruction(null)))));
+
+        });
+
+        //THEN
+        assertTrue(exception.getMessage()
+                .contains(messageError("this instruction is null")));
+    }
+
+
+    @Test
+    void instructionEmpty(){
+        //GIVEN
+        Mower mower = new Mower();
+
+        //WHEN
+        InstructionEmptyException exception = assertThrows(InstructionEmptyException.class, () -> {
+            mower.lastPosition(lawn(dimension(5,5),
+                    mowers(
+                            mower(position(0, 3), Direction.NORTH, instruction("")))));
+
+        });
+
+        //THEN
+        assertTrue(exception.getMessage()
+                .contains(messageError("The instruction is empty")));
+    }
+
+
     private Lawn lawn(Dimension dimension, List<Mower> mowers) {
         return new Lawn(dimension, mowers);
     }
@@ -365,4 +426,7 @@ class MowerTest {
         return new Position(x, y);
     }
 
+    private String messageError(String s) {
+        return s;
+    }
 }

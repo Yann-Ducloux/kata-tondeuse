@@ -1,5 +1,9 @@
 package model;
 
+import exception.InstructionEmptyException;
+import exception.InstructionNullException;
+import exception.LetterUnknownException;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -22,6 +26,12 @@ public enum Instruction {
 
     private static final String EMPTY_FIELD = "";
     public static List<Instruction> transcription(String instructionString) {
+        if(instructionString == null) {
+            throw new InstructionNullException();
+        }
+        if(instructionString.isEmpty()) {
+            throw new InstructionEmptyException();
+        }
         return Stream.of(instructionString.split(EMPTY_FIELD))
                 .map (Instruction::convertToInstruction)
                 .collect(Collectors.toList());
@@ -33,7 +43,7 @@ public enum Instruction {
                 return instruction;
             }
         }
-        return null;
+        throw new LetterUnknownException();
     }
 
     public static Mower executeInstructions(Mower mower, Dimension dimension) {
